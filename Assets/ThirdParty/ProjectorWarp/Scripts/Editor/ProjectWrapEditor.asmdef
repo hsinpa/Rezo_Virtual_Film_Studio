@@ -1,0 +1,18 @@
+{
+    "name": "ProjectWrapEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8b1717c8ba132f347bb4417bbee6c741"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
