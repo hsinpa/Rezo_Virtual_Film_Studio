@@ -10,6 +10,7 @@ using System.IO;
 using UnityEditor.SearchService;
 using Hsinpa.Utility;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 namespace Hsinpa.UI
 {
@@ -29,6 +30,10 @@ namespace Hsinpa.UI
         private string cache_key;
         private List<TextMeshProUGUI> scene_selectors = new List<TextMeshProUGUI>();
 
+        private List<string> scene_list = new List<string>();
+        public List<string> Scene_List => scene_list;
+
+
         protected override void Start() {
             addressableSceneManagement = new AddressableSceneManagement();
             string add_path = Path.Combine(Application.streamingAssetsPath, Hsinpa.Static.StaticFlag.Path.AddressableList);
@@ -39,10 +44,12 @@ namespace Hsinpa.UI
             }
 
             UtilityFunc.SetSimpleBtnEvent(loadBtn, OnSceneLoadClick);
-            Setup();
         }
 
         public void Setup() {
+            scene_list.Clear();
+            scene_selectors.Clear();
+
             var scene_array = sceneListJson["scene"].AsArray;
 
             foreach (var scene_j in scene_array) {
@@ -52,6 +59,7 @@ namespace Hsinpa.UI
                 var ui_button = ui_text.GetComponent<Button>();
 
                 scene_selectors.Add(ui_text);
+                scene_list.Add(add_key);
 
                 UtilityFunc.SetSimpleBtnEvent(ui_button, () => {
 
@@ -65,14 +73,16 @@ namespace Hsinpa.UI
             }
         }
 
+        public async Task<bool> LoadScene(string addressable_key) {
+            return await addressableSceneManagement.LoadAddScene(addressable_key);
+        }
+
         private async void OnSceneLoadClick() {
             if (string.IsNullOrEmpty(cache_key)) return;
 
-            bool result =  await addressableSceneManagement.LoadAddScene(cache_key);
+            bool result =  await LoadScene(cache_key);
 
             if (result) Modals.instance.Close();
         }
-
-
     }
 }
