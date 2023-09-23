@@ -1,0 +1,54 @@
+{
+    "name": "PlayerAction",
+    "maps": [
+        {
+            "name": "UIControl",
+            "id": "6a3f8d13-d438-4499-8de4-3e3c043fd2b3",
+            "actions": [
+                {
+                    "name": "Addressable_UI",
+                    "type": "Button",
+                    "id": "5f6fc268-81de-4d79-99de-497c5eefe520",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mask_UI",
+                    "type": "Button",
+                    "id": "53555dd9-3095-4c68-ade3-3adab337d63c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9b67bb3a-2a65-4099-b31c-debf97d87150",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Addressable_UI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da6a970f-6be4-4523-b35b-a5fa5e5ba562",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mask_UI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -1,0 +1,11 @@
+object panel
+  transforma box data interfacing
+  camera controller
+  sizebutton
+
+layer panel
+
+scaling adjustment
+  scaling local version
+
+choose shape menu
