@@ -1,0 +1,164 @@
+fileFormatVersion: 2
+guid: 2be6291d3b0efbf4290c11edf279533e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Billboard-Maple1B
+    100002: //RootNode
+    100004: Tree-Maple1B_LOD0
+    100006: Tree-Maple1B_LOD1
+    100008: Tree-Maple1B_LOD2
+    100010: Tree-Maple1B_LOD3
+    100012: Billboard-MapleB
+    400000: Billboard-Maple1B
+    400002: //RootNode
+    400004: Tree-Maple1B_LOD0
+    400006: Tree-Maple1B_LOD1
+    400008: Tree-Maple1B_LOD2
+    400010: Tree-Maple1B_LOD3
+    400012: Billboard-MapleB
+    2100000: leaf-maple
+    2100002: bark-maple2
+    2100004: bark-maple1
+    2100006: Billboard-MapleA
+    2100008: Billboard-MapleB
+    2100010: leaf-mapleB
+    2300000: Billboard-Maple1B
+    2300002: Tree-Maple1B_LOD0
+    2300004: Tree-Maple1B_LOD1
+    2300006: Tree-Maple1B_LOD2
+    2300008: Tree-Maple1B_LOD3
+    2300010: Billboard-MapleB
+    3300000: Billboard-Maple1B
+    3300002: Tree-Maple1B_LOD0
+    3300004: Tree-Maple1B_LOD1
+    3300006: Tree-Maple1B_LOD2
+    3300008: Tree-Maple1B_LOD3
+    3300010: Billboard-MapleB
+    4300000: Tree-Maple1B_LOD0
+    4300002: Tree-Maple1B_LOD1
+    4300004: Tree-Maple1B_LOD2
+    4300006: Tree-Maple1B_LOD3
+    4300008: Billboard-Maple1B
+    4300010: Billboard-MapleB
+    20500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Billboard-MapleA
+    second: {fileID: 2100000, guid: b71231711ecee0e43b73747fe2654c11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Billboard-MapleB
+    second: {fileID: 2100000, guid: 37cf13a87ca951b4fa5f97bd6fbd6b29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bark-maple1
+    second: {fileID: 2100000, guid: fb0a11e48529290439fbc323689e8a75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bark-maple2
+    second: {fileID: 2100000, guid: fb0a11e48529290439fbc323689e8a75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leaf-maple
+    second: {fileID: 2100000, guid: a3a387245f2c2ee4fb9010a514376171, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leaf-mapleB
+    second: {fileID: 2100000, guid: cbaf0420cfe0c8845841e8778912ea53, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
