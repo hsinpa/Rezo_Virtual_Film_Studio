@@ -46,7 +46,15 @@ namespace Hsinpa.UI
             UtilityFunc.SetSimpleBtnEvent(loadBtn, OnSceneLoadClick);
         }
 
+        public override void Show(bool isShow)
+        {
+            base.Show(isShow);
+
+            if (isShow) Setup();
+        }
+
         public void Setup() {
+            UtilityFunc.ClearChildObject(scene_selector_container);
             scene_list.Clear();
             scene_selectors.Clear();
 
@@ -57,6 +65,9 @@ namespace Hsinpa.UI
 
                 var ui_text = UtilityFunc.CreateObjectToParent<TextMeshProUGUI>(scene_selector_container, scene_selector_prefab.gameObject);
                 var ui_button = ui_text.GetComponent<Button>();
+
+                Debug.Log("add_key " + add_key);
+                ui_text.color = (add_key == cache_key) ? Color.magenta : Color.white;
 
                 scene_selectors.Add(ui_text);
                 scene_list.Add(add_key);
@@ -74,6 +85,10 @@ namespace Hsinpa.UI
         }
 
         public async Task<bool> LoadScene(string addressable_key) {
+            cache_key = addressable_key;
+
+            Debug.Log("addressable_key " + addressable_key);
+
             return await addressableSceneManagement.LoadAddScene(addressable_key);
         }
 

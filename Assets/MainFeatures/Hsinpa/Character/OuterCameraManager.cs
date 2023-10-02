@@ -13,29 +13,41 @@ namespace Hsinpa.Character {
         private float rotation_sensitivity;
 
         private Transform mCameraTransform;
-        private StarterAssets mStarterAssetsInputs;
-
+        private InputAssets.PlayerActions mPlayerAction;
         float currentRotationX = 0;
         float currentRotationY = 0;
 
         Vector2 movementVector;
 
-        private void Start() {
+        private bool is_ready;
+
+        public void Setup(InputAssets.PlayerActions playerAction) {
+            mPlayerAction = playerAction;
+
             mCameraTransform = GetComponent<Transform>();
-            mStarterAssetsInputs = new StarterAssets();
-            mStarterAssetsInputs.Player.Enable();
 
-            mStarterAssetsInputs.Player.Move.performed += OnPlayerMove;
-            mStarterAssetsInputs.Player.Move.canceled += OnPlayerMove;
+            mPlayerAction.Move.performed += OnPlayerMove;
+            mPlayerAction.Move.canceled += OnPlayerMove;
+            mPlayerAction.Look.performed += OnPlayerLook;
 
-            mStarterAssetsInputs.Player.Look.performed += OnPlayerLook;
+            is_ready = true;
+        }
+
+        public void Teleport(Vector3 position, Quaternion rotation) {
+
+            Debug.Log("Teleport  " + position);
+
+            mCameraTransform.position = position;
+            mCameraTransform.rotation = rotation;
         }
 
         private void Update() {
             PerformMovement();
         }
 
-        private void PerformMovement() {
+        private void PerformMovement() { 
+            if (!is_ready) return;
+
             Vector3 position = mCameraTransform.position;
             position += ((mCameraTransform.forward * movementVector.y) + (mCameraTransform.right * movementVector.x)) * translation_sensitivity * Time.deltaTime;
             mCameraTransform.position = position;
@@ -44,8 +56,6 @@ namespace Hsinpa.Character {
         #region Action Event
         private void OnPlayerMove(InputAction.CallbackContext callbackContext) {
             movementVector = callbackContext.ReadValue<Vector2>();
-
-            Debug.Log(movementVector);
         }
 
         private void OnPlayerLook(InputAction.CallbackContext callbackContext) {

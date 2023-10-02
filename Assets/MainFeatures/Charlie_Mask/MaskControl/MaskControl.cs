@@ -83,8 +83,6 @@ public class MaskControl : MonoBehaviour
         objectCamera.enabled = true;
         objectImage.texture = objectTexture;
         objectImage.color = Color.white;
-
-
     }
 
     private void OnDisable()
@@ -98,11 +96,6 @@ public class MaskControl : MonoBehaviour
         objectImage.texture = null;
 
         RenderTexture.ReleaseTemporary(objectTexture);
-    }
-
-    private void Awake()
-    {
-        //Inst = this;
     }
 
     void Start()

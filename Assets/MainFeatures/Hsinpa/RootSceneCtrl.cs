@@ -10,8 +10,9 @@ namespace Hsinpa.Ctrl
 {
     public class RootSceneCtrl : MonoBehaviour
     {
-
         private Modals _modals;
+
+        public System.Action SceneActiveEvent;
 
         void Start() {
             _modals = Modals.instance;
@@ -26,7 +27,9 @@ namespace Hsinpa.Ctrl
             sceneCtrlModal.Setup();
 
             if (sceneCtrlModal.Scene_List != null && sceneCtrlModal.Scene_List.Count > 0) {
-               _ = sceneCtrlModal.LoadScene(sceneCtrlModal.Scene_List[0]);
+               await sceneCtrlModal.LoadScene(sceneCtrlModal.Scene_List[0]);
+
+                if (SceneActiveEvent != null) SceneActiveEvent();
             }
         }
     }
