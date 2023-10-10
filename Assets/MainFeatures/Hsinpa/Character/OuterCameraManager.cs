@@ -12,6 +12,9 @@ namespace Hsinpa.Character {
         [SerializeField, Range(1f, 20)]
         private float rotation_sensitivity;
 
+        [SerializeField]
+        private Transform innerCameraTransform;
+
         private Transform mCameraTransform;
         private InputAssets.PlayerActions mPlayerAction;
         float currentRotationX = 0;
@@ -34,11 +37,12 @@ namespace Hsinpa.Character {
         }
 
         public void Teleport(Vector3 position, Quaternion rotation) {
+            mCameraTransform.position = PositionTransform(position);
 
-            Debug.Log("Teleport  " + position);
+            var coming_euler = rotation.eulerAngles;
+            var ignore_z_euler = Quaternion.Euler(coming_euler.x, coming_euler.y, 0);
 
-            mCameraTransform.position = position;
-            mCameraTransform.rotation = rotation;
+            mCameraTransform.rotation = ignore_z_euler;
         }
 
         private void Update() {
@@ -51,6 +55,12 @@ namespace Hsinpa.Character {
             Vector3 position = mCameraTransform.position;
             position += ((mCameraTransform.forward * movementVector.y) + (mCameraTransform.right * movementVector.x)) * translation_sensitivity * Time.deltaTime;
             mCameraTransform.position = position;
+        }
+
+        private Vector3 PositionTransform(Vector3 teleport_position) {
+            Vector3 diff = teleport_position - this.innerCameraTransform.position;
+
+            return this.innerCameraTransform.position + diff;
         }
 
         #region Action Event

@@ -7,7 +7,6 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using Hsinpa.Addressable;
 using System.IO;
-using UnityEditor.SearchService;
 using Hsinpa.Utility;
 using UnityEngine.UI;
 using System.Threading.Tasks;

@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.rezo_virtual_film_studio.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "W:\\Unity\\Rezo_Virtual_Film_Studio\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Rezo_Virtual_Film_Studio [Testing]"
+        }
+      }
+    }
+  ]
+}

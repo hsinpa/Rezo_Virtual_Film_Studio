@@ -6,7 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/SteamVR/Simple Sample.unity
+    guid: 55f0e497bac1408458ff9dcebe0b775a
+  - enabled: 1
     path: Assets/Scenes/RootScene.unity
     guid: d3b950897f2ec6e4baa8a0d7f3c380bb
   m_configObjects:
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 2a0f6e128d4c5224c8ac73c7f561688d, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: fd9a21884c56ee84eb6b33a014a3fe4a, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4d31e125bbbb4794d87621ff9b26c2fa, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 0ae75923cf059b0438f1019b11204e48, type: 2}
