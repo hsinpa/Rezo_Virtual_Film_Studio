@@ -2140,6 +2140,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1342564281803276358, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342564281803276358, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342564281803276358, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342564281803276358, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342564281803276358, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1557428801237965762, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2240,6 +2260,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3988601917754083743, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988601917754083743, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988601917754083743, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988601917754083743, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988601917754083743, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025381325537388946, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025381325537388946, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025381325537388946, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025381325537388946, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025381325537388946, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4902986806021507455, guid: 8a9e88fca50f1e24dbb9079f4c8f136c, type: 3}
       propertyPath: m_Name
       value: SceneModal
@@ -2325,7 +2385,7 @@ Camera:
     height: 1
   near clip plane: 0.2
   far clip plane: 500
-  field of view: 40
+  field of view: 55
   orthographic: 0
   orthographic size: 10
   m_Depth: -1

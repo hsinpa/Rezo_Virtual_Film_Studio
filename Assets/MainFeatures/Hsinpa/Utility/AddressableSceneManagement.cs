@@ -26,6 +26,8 @@ namespace Hsinpa.Addressable
 
             if (ophandle.Status == AsyncOperationStatus.Succeeded) {
                 c_scene_instance = result;
+
+                SceneManager.SetActiveScene(c_scene_instance.Scene);
                 return true;
             }
 

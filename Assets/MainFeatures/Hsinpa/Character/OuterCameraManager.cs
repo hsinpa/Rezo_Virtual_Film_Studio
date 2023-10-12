@@ -15,7 +15,11 @@ namespace Hsinpa.Character {
         [SerializeField]
         private Transform innerCameraTransform;
 
+        private float fov_min_range_config = 30;
+        private float fov_max_range_config = 65;
+
         private Transform mCameraTransform;
+        private Camera mCamera;
         private InputAssets.PlayerActions mPlayerAction;
         float currentRotationX = 0;
         float currentRotationY = 0;
@@ -28,10 +32,12 @@ namespace Hsinpa.Character {
             mPlayerAction = playerAction;
 
             mCameraTransform = GetComponent<Transform>();
+            mCamera = mCameraTransform.GetComponentInChildren<Camera>();
 
             mPlayerAction.Move.performed += OnPlayerMove;
             mPlayerAction.Move.canceled += OnPlayerMove;
             mPlayerAction.Look.performed += OnPlayerLook;
+            mPlayerAction.Zoom.performed += OnCameraZoom;
 
             is_ready = true;
         }
@@ -53,7 +59,7 @@ namespace Hsinpa.Character {
             if (!is_ready) return;
 
             Vector3 position = mCameraTransform.position;
-            position += ((mCameraTransform.forward * movementVector.y) + (mCameraTransform.right * movementVector.x)) * translation_sensitivity * Time.deltaTime;
+            position += ((innerCameraTransform.forward * movementVector.y) + (innerCameraTransform.right * movementVector.x)) * translation_sensitivity * Time.deltaTime;
             mCameraTransform.position = position;
         }
 
@@ -64,6 +70,12 @@ namespace Hsinpa.Character {
         }
 
         #region Action Event
+        private void OnCameraZoom(InputAction.CallbackContext callbackContext) {
+            Vector2 camera_zoom_delta = callbackContext.ReadValue<Vector2>();
+
+            mCamera.fieldOfView = Mathf.Clamp(mCamera.fieldOfView + (camera_zoom_delta.y * Time.deltaTime), fov_min_range_config, fov_max_range_config);
+        }
+
         private void OnPlayerMove(InputAction.CallbackContext callbackContext) {
             movementVector = callbackContext.ReadValue<Vector2>();
         }

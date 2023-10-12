@@ -6,6 +6,10 @@ namespace Hsinpa.Static
 {
     public class StaticFlag
     {
+        public class Config {
+            public const float FOG_INTENSITY_MAX = 0.3f;
+            public const float FOG_INTENSITY_MIN = 0.003f;
+        }
 
         public class Input
         {
@@ -21,6 +25,11 @@ namespace Hsinpa.Static
 
         public class Path {
             public const string AddressableList = "addressable_list.json";
+        }
+
+        public class PlayerPref {
+            public const string DayNightTogglePref = "pref@day_night_toggle";
+            public const string FogIntensityPref = "pref@fog_intensity";
         }
     }
 }
