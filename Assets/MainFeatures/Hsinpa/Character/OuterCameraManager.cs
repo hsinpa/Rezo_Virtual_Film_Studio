@@ -19,7 +19,7 @@ namespace Hsinpa.Character {
         private float fov_max_range_config = 65;
 
         private Transform mCameraTransform;
-        private Camera mCamera;
+        private Camera[] mCamera;
         private InputAssets.PlayerActions mPlayerAction;
         float currentRotationX = 0;
         float currentRotationY = 0;
@@ -32,7 +32,7 @@ namespace Hsinpa.Character {
             mPlayerAction = playerAction;
 
             mCameraTransform = GetComponent<Transform>();
-            mCamera = mCameraTransform.GetComponentInChildren<Camera>();
+            mCamera = mCameraTransform.GetComponentsInChildren<Camera>();
 
             mPlayerAction.Move.performed += OnPlayerMove;
             mPlayerAction.Move.canceled += OnPlayerMove;
@@ -73,7 +73,10 @@ namespace Hsinpa.Character {
         private void OnCameraZoom(InputAction.CallbackContext callbackContext) {
             Vector2 camera_zoom_delta = callbackContext.ReadValue<Vector2>();
 
-            mCamera.fieldOfView = Mathf.Clamp(mCamera.fieldOfView + (camera_zoom_delta.y * Time.deltaTime), fov_min_range_config, fov_max_range_config);
+            foreach (var camera in mCamera) {
+                if (!camera.orthographic)
+                    camera.fieldOfView = Mathf.Clamp(camera.fieldOfView + (camera_zoom_delta.y * Time.deltaTime), fov_min_range_config, fov_max_range_config);
+            }
         }
 
         private void OnPlayerMove(InputAction.CallbackContext callbackContext) {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultiProjectorWarpSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,8 @@ public class MaskControl : MonoBehaviour
     public GameObject maskContainer;
     [Header("Object Panel")]
     public TransformBoxPresenter objTransBox;
+    public ProjectionWarpSystem projectionWarpSystem;
+    public int camera_index;
 
     public Toggle posTgl;
     public Toggle rotTgl;
@@ -98,9 +101,12 @@ public class MaskControl : MonoBehaviour
         RenderTexture.ReleaseTemporary(objectTexture);
     }
 
-    void Start()
-    {
-        SetMaskControl(mainCamera);
+    private void Awake() {
+        projectionWarpSystem.OnCameraInitEvent += (x) => {
+            if (x != null && x.Count > camera_index) {
+                SetMaskControl(x[camera_index]);
+            }
+        };
     }
 
     private void Update()
@@ -113,12 +119,12 @@ public class MaskControl : MonoBehaviour
         }
 
         //update obj camera
-        if (objectCamera)
-        {
-            objectCamera.transform.position = mainCamera.transform.position;
-            objectCamera.transform.rotation = mainCamera.transform.rotation;
-            objectCamera.fieldOfView = mainCamera.fieldOfView;
-        }
+        //if (objectCamera)
+        //{
+        //    objectCamera.transform.position = mainCamera.transform.position;
+        //    objectCamera.transform.rotation = mainCamera.transform.rotation;
+        //    objectCamera.fieldOfView = mainCamera.fieldOfView;
+        //}
     }
 
     private void SetMaskControl(Camera p_camera) {
@@ -334,9 +340,6 @@ public class MaskControl : MonoBehaviour
 
         loadedCamPos = saveData.camera.pos.ToVec3();
         loadedCamRot = saveData.camera.eulerAngles.ToVec3();
-
-        this.mainCamera.transform.position = loadedCamPos;
-        this.mainCamera.transform.eulerAngles = loadedCamRot;
 
         LoadMask(saveData.masks);
 

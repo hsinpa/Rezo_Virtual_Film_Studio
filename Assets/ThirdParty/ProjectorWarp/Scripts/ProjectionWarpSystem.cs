@@ -60,6 +60,7 @@ namespace MultiProjectorWarpSystem
         public List<Camera> sourceCameras;
         public List<ProjectionMesh> projectionCameras;
         public List<int> targetDisplays;
+        public System.Action<List<Camera>> OnCameraInitEvent;
 
         [Header("Distances")]
         public Vector2 overlap;
@@ -75,9 +76,6 @@ namespace MultiProjectorWarpSystem
 
         [Header("File IO")]
         public string saveCalibrationFile;
-
-        
-
 
         public void UpdateFilename()
         {
@@ -120,6 +118,9 @@ namespace MultiProjectorWarpSystem
             DestroyCameras();
             InitCameras();
             UpdateSourceCameras();
+
+            if (OnCameraInitEvent != null)
+                OnCameraInitEvent.Invoke(sourceCameras);
         }
 
         public void AssignReferences()
