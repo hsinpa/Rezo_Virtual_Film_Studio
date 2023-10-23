@@ -20,15 +20,18 @@ namespace Hsinpa.Main
         private OuterCameraManager outerCameraManager;
 
         [SerializeField]
-        private Canvas maskCanvas;
+        private Canvas[] maskCanvas;
 
         private InputAssets mIputActions;
         private InterestPointManager mInterestPointManager;
 
         private int uiRefCount = 0;
 
+        private int maskCanvasIndex = 0;
+
         void Start()
         {
+            maskCanvasIndex = maskCanvas.Length;
             mIputActions = new InputAssets();
             mIputActions.Player.Enable();
             outerCameraManager.Setup(mIputActions.Player);
@@ -77,10 +80,20 @@ namespace Hsinpa.Main
 
         private void OnUIMaskEvent(InputAction.CallbackContext callbackContext)
         {
-            bool next_active = !maskCanvas.gameObject.activeSelf;
-            maskCanvas.gameObject.SetActive(next_active);
+            foreach (var mask_canvas in maskCanvas) mask_canvas.gameObject.SetActive(false);
 
-            PlayerInputEnable(!next_active);
+            maskCanvasIndex = (maskCanvasIndex + 1) % (maskCanvas.Length + 1);
+
+            Debug.Log("maskCanvasIndex " + maskCanvasIndex);
+
+            if (maskCanvasIndex == maskCanvas.Length) {
+                PlayerInputEnable(true);
+                return;
+            }
+
+            maskCanvas[maskCanvasIndex].gameObject.SetActive(true);
+
+            PlayerInputEnable(false);
         }
 
         private void OnUIProjectionEvent(InputAction.CallbackContext callbackContext)
