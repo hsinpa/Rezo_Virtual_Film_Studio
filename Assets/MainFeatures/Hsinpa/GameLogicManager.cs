@@ -84,16 +84,18 @@ namespace Hsinpa.Main
 
             maskCanvasIndex = (maskCanvasIndex + 1) % (maskCanvas.Length + 1);
 
-            Debug.Log("maskCanvasIndex " + maskCanvasIndex);
 
             if (maskCanvasIndex == maskCanvas.Length) {
                 PlayerInputEnable(true);
+                Debug.Log("maskCanvasIndex " + maskCanvasIndex);
+
                 return;
             }
 
             maskCanvas[maskCanvasIndex].gameObject.SetActive(true);
 
-            PlayerInputEnable(false);
+            if (uiRefCount == 0)
+                PlayerInputEnable(false);
         }
 
         private void OnUIProjectionEvent(InputAction.CallbackContext callbackContext)

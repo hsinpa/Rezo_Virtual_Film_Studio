@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Hsinpa.Type.GeneralTypeStruct;
 
 namespace Hsinpa.Character {
     public class OuterCameraManager : MonoBehaviour
@@ -20,6 +21,9 @@ namespace Hsinpa.Character {
 
         private Transform mCameraTransform;
         private Camera[] mCamera;
+
+        private CameraTransform[] mCameraTransformConfigs;
+
         private InputAssets.PlayerActions mPlayerAction;
         float currentRotationX = 0;
         float currentRotationY = 0;
@@ -27,17 +31,27 @@ namespace Hsinpa.Character {
         Vector2 movementVector;
 
         private bool is_ready;
+        private float record_time;
 
         public void Setup(InputAssets.PlayerActions playerAction) {
             mPlayerAction = playerAction;
 
             mCameraTransform = GetComponent<Transform>();
             mCamera = mCameraTransform.GetComponentsInChildren<Camera>();
+            mCameraTransformConfigs = new CameraTransform[mCamera.Length];
+            
+            for (int i = 0; i < mCamera.Length; i++) {
+                mCameraTransformConfigs[i] = new CameraTransform { position = mCamera[i].transform.localPosition,
+                                                                    rotation = mCamera[i].transform.localRotation.eulerAngles };
+            }
 
             mPlayerAction.Move.performed += OnPlayerMove;
             mPlayerAction.Move.canceled += OnPlayerMove;
             mPlayerAction.Look.performed += OnPlayerLook;
             mPlayerAction.Zoom.performed += OnCameraZoom;
+
+            Type.GeneralTypeStruct.GlobalConfigFileStruct = Type.GeneralTypeStruct.SyncData();
+            UpdateCameraConfig(Type.GeneralTypeStruct.GlobalConfigFileStruct);
 
             is_ready = true;
         }
@@ -53,6 +67,47 @@ namespace Hsinpa.Character {
 
         private void Update() {
             PerformMovement();
+            UpdateExternalConfig();
+        }
+
+        private void UpdateExternalConfig() {
+            if (Type.GeneralTypeStruct.GlobalConfigFileStruct.SyncData && Time.time > record_time) {
+                Type.GeneralTypeStruct.GlobalConfigFileStruct = Type.GeneralTypeStruct.SyncData();
+
+                UpdateCameraConfig(Type.GeneralTypeStruct.GlobalConfigFileStruct);
+
+                record_time = Time.time + 1;
+            }
+        }
+
+        private void UpdateCameraConfig(Type.GeneralTypeStruct.ConfigFileStruct globalConfigFileStruct) {
+            if (mCamera.Length > 0) {
+                mCamera[0].transform.localPosition = new Vector3 (
+                    mCameraTransformConfigs[0].position.x + globalConfigFileStruct.Project_1_Pos_X,
+                    mCameraTransformConfigs[0].position.y + globalConfigFileStruct.Project_1_Pos_Y,
+                    mCameraTransformConfigs[0].position.z + globalConfigFileStruct.Project_1_Pos_Z
+                );
+
+                mCamera[0].transform.localRotation = Quaternion.Euler( new Vector3(
+                    mCameraTransformConfigs[0].rotation.x,
+                    mCameraTransformConfigs[0].rotation.y + globalConfigFileStruct.Project_1_Rot_Y,
+                    mCameraTransformConfigs[0].rotation.z
+                    ));
+            }
+
+            if (mCamera.Length > 1) {
+                mCamera[1].transform.localPosition = new Vector3(
+                    mCameraTransformConfigs[1].position.x + globalConfigFileStruct.Project_2_Pos_X,
+                    mCameraTransformConfigs[1].position.y + globalConfigFileStruct.Project_2_Pos_Y,
+                    mCameraTransformConfigs[1].position.z + globalConfigFileStruct.Project_2_Pos_Z
+                );
+
+                mCamera[1].transform.localRotation = Quaternion.Euler(new Vector3(
+                    mCameraTransformConfigs[1].rotation.x,
+                    mCameraTransformConfigs[1].rotation.y + globalConfigFileStruct.Project_2_Rot_Y,
+                    mCameraTransformConfigs[1].rotation.z
+                    ));
+            }
         }
 
         private void PerformMovement() { 
