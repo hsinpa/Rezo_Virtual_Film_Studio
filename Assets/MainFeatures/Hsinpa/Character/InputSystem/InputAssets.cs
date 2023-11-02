@@ -374,15 +374,6 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Projection_UI"",
-                    ""type"": ""Button"",
-                    ""id"": ""3b141017-cd4c-4a1c-8fbb-7fc769bcdbf4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Mask_UI"",
                     ""type"": ""Button"",
                     ""id"": ""12df9d33-0983-4044-9f2f-f1e9a52f4c9c"",
@@ -406,23 +397,40 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""33662ab4-7da0-4b7d-9dd7-34def282a543"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Projection_UI"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""cdcf0beb-2bea-4a9e-9268-d8e05c9deb21"",
                     ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mask_UI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Plugin_Projector"",
+            ""id"": ""2175d265-4a23-412c-822b-37160a489d0a"",
+            ""actions"": [
+                {
+                    ""name"": ""Enable_Canvas"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cb84539-07b6-4fdb-a524-d524b9845289"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4be62e5e-299e-4fc0-83ee-7833bea13285"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enable_Canvas"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -490,8 +498,10 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Scene_UI = m_UI.FindAction("Scene_UI", throwIfNotFound: true);
-        m_UI_Projection_UI = m_UI.FindAction("Projection_UI", throwIfNotFound: true);
         m_UI_Mask_UI = m_UI.FindAction("Mask_UI", throwIfNotFound: true);
+        // Plugin_Projector
+        m_Plugin_Projector = asset.FindActionMap("Plugin_Projector", throwIfNotFound: true);
+        m_Plugin_Projector_Enable_Canvas = m_Plugin_Projector.FindAction("Enable_Canvas", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -640,14 +650,12 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Scene_UI;
-    private readonly InputAction m_UI_Projection_UI;
     private readonly InputAction m_UI_Mask_UI;
     public struct UIActions
     {
         private @InputAssets m_Wrapper;
         public UIActions(@InputAssets wrapper) { m_Wrapper = wrapper; }
         public InputAction @Scene_UI => m_Wrapper.m_UI_Scene_UI;
-        public InputAction @Projection_UI => m_Wrapper.m_UI_Projection_UI;
         public InputAction @Mask_UI => m_Wrapper.m_UI_Mask_UI;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
@@ -661,9 +669,6 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
             @Scene_UI.started += instance.OnScene_UI;
             @Scene_UI.performed += instance.OnScene_UI;
             @Scene_UI.canceled += instance.OnScene_UI;
-            @Projection_UI.started += instance.OnProjection_UI;
-            @Projection_UI.performed += instance.OnProjection_UI;
-            @Projection_UI.canceled += instance.OnProjection_UI;
             @Mask_UI.started += instance.OnMask_UI;
             @Mask_UI.performed += instance.OnMask_UI;
             @Mask_UI.canceled += instance.OnMask_UI;
@@ -674,9 +679,6 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
             @Scene_UI.started -= instance.OnScene_UI;
             @Scene_UI.performed -= instance.OnScene_UI;
             @Scene_UI.canceled -= instance.OnScene_UI;
-            @Projection_UI.started -= instance.OnProjection_UI;
-            @Projection_UI.performed -= instance.OnProjection_UI;
-            @Projection_UI.canceled -= instance.OnProjection_UI;
             @Mask_UI.started -= instance.OnMask_UI;
             @Mask_UI.performed -= instance.OnMask_UI;
             @Mask_UI.canceled -= instance.OnMask_UI;
@@ -697,6 +699,52 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Plugin_Projector
+    private readonly InputActionMap m_Plugin_Projector;
+    private List<IPlugin_ProjectorActions> m_Plugin_ProjectorActionsCallbackInterfaces = new List<IPlugin_ProjectorActions>();
+    private readonly InputAction m_Plugin_Projector_Enable_Canvas;
+    public struct Plugin_ProjectorActions
+    {
+        private @InputAssets m_Wrapper;
+        public Plugin_ProjectorActions(@InputAssets wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Enable_Canvas => m_Wrapper.m_Plugin_Projector_Enable_Canvas;
+        public InputActionMap Get() { return m_Wrapper.m_Plugin_Projector; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Plugin_ProjectorActions set) { return set.Get(); }
+        public void AddCallbacks(IPlugin_ProjectorActions instance)
+        {
+            if (instance == null || m_Wrapper.m_Plugin_ProjectorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Plugin_ProjectorActionsCallbackInterfaces.Add(instance);
+            @Enable_Canvas.started += instance.OnEnable_Canvas;
+            @Enable_Canvas.performed += instance.OnEnable_Canvas;
+            @Enable_Canvas.canceled += instance.OnEnable_Canvas;
+        }
+
+        private void UnregisterCallbacks(IPlugin_ProjectorActions instance)
+        {
+            @Enable_Canvas.started -= instance.OnEnable_Canvas;
+            @Enable_Canvas.performed -= instance.OnEnable_Canvas;
+            @Enable_Canvas.canceled -= instance.OnEnable_Canvas;
+        }
+
+        public void RemoveCallbacks(IPlugin_ProjectorActions instance)
+        {
+            if (m_Wrapper.m_Plugin_ProjectorActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlugin_ProjectorActions instance)
+        {
+            foreach (var item in m_Wrapper.m_Plugin_ProjectorActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Plugin_ProjectorActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public Plugin_ProjectorActions @Plugin_Projector => new Plugin_ProjectorActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -745,7 +793,10 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnScene_UI(InputAction.CallbackContext context);
-        void OnProjection_UI(InputAction.CallbackContext context);
         void OnMask_UI(InputAction.CallbackContext context);
+    }
+    public interface IPlugin_ProjectorActions
+    {
+        void OnEnable_Canvas(InputAction.CallbackContext context);
     }
 }

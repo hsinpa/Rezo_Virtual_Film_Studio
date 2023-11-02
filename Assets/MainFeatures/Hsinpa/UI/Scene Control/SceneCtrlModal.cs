@@ -11,6 +11,8 @@ using Hsinpa.Utility;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using Hsinpa.Static;
+using UnityEngine.Rendering; // .Universal for urp
+using UnityEngine.Rendering.Universal;
 
 namespace Hsinpa.UI
 {
@@ -31,6 +33,16 @@ namespace Hsinpa.UI
         private Slider fog_intensity_slider;
 
         [SerializeField]
+        private Slider contrast_slider;
+
+        [SerializeField]
+        private Slider saturate_slider;
+
+        [SerializeField]
+        private Button color_adjustment;
+
+        [Header("Bottom")]
+        [SerializeField]
         private Button loadBtn;
 
         private AddressableSceneManagement addressableSceneManagement;
@@ -40,6 +52,8 @@ namespace Hsinpa.UI
 
         private List<string> scene_list = new List<string>();
         public List<string> Scene_List => scene_list;
+
+        private Volume _volume;
 
         protected override void Start() {
             addressableSceneManagement = new AddressableSceneManagement();
@@ -52,6 +66,9 @@ namespace Hsinpa.UI
 
             UtilityFunc.SetSimpleBtnEvent(loadBtn, OnSceneLoadClick);
             fog_intensity_slider.onValueChanged.AddListener(OnFogSliderChange);
+            saturate_slider.onValueChanged.AddListener(OnSaturateToggleChange);
+            contrast_slider.onValueChanged.AddListener(OnContrastToggleChange);
+
             day_night_toggle.onValueChanged.AddListener(OnDayNightToggleChange);
         }
 
@@ -108,6 +125,19 @@ namespace Hsinpa.UI
             fog_intensity_slider.SetValueWithoutNotify(fog_intensity_normalize);
             float intensity = (Mathf.Lerp(StaticFlag.Config.FOG_INTENSITY_MIN, StaticFlag.Config.FOG_INTENSITY_MAX, fog_intensity_normalize));
             RenderSettings.fogDensity = intensity;
+
+            //Contrast
+            _volume = GameObject.FindFirstObjectByType<Volume>();
+            if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
+                float contrastValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.ContrastTogglePref, 0.5f);
+                float saturateValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.SaturateTogglePref, 0.5f);
+
+                contrast_slider.SetValueWithoutNotify(contrastValue);
+                saturate_slider.SetValueWithoutNotify(saturateValue);
+
+                colorAdjust.contrast.value = RescaleVariable(contrastValue, scale: 100);
+                colorAdjust.saturation.value = RescaleVariable(saturateValue, scale: 100);
+            }
         }
 
         public async Task<bool> LoadScene(string addressable_key) {
@@ -143,6 +173,36 @@ namespace Hsinpa.UI
         private void OnDayNightToggleChange(bool p_value) {
             PlayerPrefs.SetInt(StaticFlag.PlayerPref.DayNightTogglePref, p_value ? 1 : 0);
             PlayerPrefs.Save();
+        }
+
+        private void OnContrastToggleChange(float p_value) {
+            if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
+                colorAdjust.contrast.value = RescaleVariable(p_value, scale: 100);
+            }
+
+            PlayerPrefs.SetFloat(StaticFlag.PlayerPref.ContrastTogglePref, p_value);
+            PlayerPrefs.Save();
+        }
+
+        private void OnSaturateToggleChange(float p_value) {
+            if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
+                colorAdjust.saturation.value = RescaleVariable(p_value, scale: 100); ;
+            }
+
+            PlayerPrefs.SetFloat(StaticFlag.PlayerPref.SaturateTogglePref, p_value);
+            PlayerPrefs.Save();
+        }
+
+        private void OnColorToggleChange(Color color) {
+            PlayerPrefs.SetFloat(StaticFlag.PlayerPref.Color_RTogglePref, color.r);
+            PlayerPrefs.SetFloat(StaticFlag.PlayerPref.Color_GTogglePref, color.g);
+            PlayerPrefs.SetFloat(StaticFlag.PlayerPref.Color_BTogglePref, color.b);
+
+            PlayerPrefs.Save();
+        }
+
+        private float RescaleVariable(float value, float scale) {
+            return ((value * 2) - 1) * scale;
         }
         #endregion
     }

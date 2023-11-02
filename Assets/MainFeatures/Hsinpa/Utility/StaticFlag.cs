@@ -30,6 +30,12 @@ namespace Hsinpa.Static
         public class PlayerPref {
             public const string DayNightTogglePref = "pref@day_night_toggle";
             public const string FogIntensityPref = "pref@fog_intensity";
+
+            public const string ContrastTogglePref = "pref@contrast_toggle";
+            public const string SaturateTogglePref = "pref@saturate_toggle";
+            public const string Color_RTogglePref = "pref@color_r_toggle";
+            public const string Color_GTogglePref = "pref@color_g_toggle";
+            public const string Color_BTogglePref = "pref@color_b_toggle";
         }
     }
 }

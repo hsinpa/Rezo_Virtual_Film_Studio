@@ -26,8 +26,8 @@ namespace Hsinpa.Main
         private InterestPointManager mInterestPointManager;
 
         private int uiRefCount = 0;
-
         private int maskCanvasIndex = 0;
+        private bool projector_ui_enable_flag = false;
 
         void Start()
         {
@@ -38,8 +38,10 @@ namespace Hsinpa.Main
 
             mIputActions.UI.Enable();
             mIputActions.UI.Mask_UI.started += OnUIMaskEvent;
-            mIputActions.UI.Projection_UI.started += OnUIProjectionEvent;
             mIputActions.UI.Scene_UI.started += OnUISceneEvent;
+
+            mIputActions.Plugin_Projector.Enable();
+            mIputActions.Plugin_Projector.Enable_Canvas.started += OnUIProjectionEvent;
 
             RegisterInput();
         }
@@ -100,7 +102,15 @@ namespace Hsinpa.Main
 
         private void OnUIProjectionEvent(InputAction.CallbackContext callbackContext)
         {
+            projector_ui_enable_flag = !projector_ui_enable_flag;
 
+            if (projector_ui_enable_flag) {
+                mIputActions.Player.Disable();
+                mIputActions.UI.Disable();
+            } else {
+                mIputActions.Player.Enable();
+                mIputActions.UI.Enable();
+            }
         }
 
         private void PlayerInputEnable(bool is_enable)

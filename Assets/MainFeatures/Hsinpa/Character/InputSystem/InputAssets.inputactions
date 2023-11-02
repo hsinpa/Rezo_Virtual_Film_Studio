@@ -352,15 +352,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Projection_UI",
-                    "type": "Button",
-                    "id": "3b141017-cd4c-4a1c-8fbb-7fc769bcdbf4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Mask_UI",
                     "type": "Button",
                     "id": "12df9d33-0983-4044-9f2f-f1e9a52f4c9c",
@@ -384,23 +375,40 @@
                 },
                 {
                     "name": "",
-                    "id": "33662ab4-7da0-4b7d-9dd7-34def282a543",
-                    "path": "<Keyboard>/p",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Projection_UI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cdcf0beb-2bea-4a9e-9268-d8e05c9deb21",
                     "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Mask_UI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Plugin_Projector",
+            "id": "2175d265-4a23-412c-822b-37160a489d0a",
+            "actions": [
+                {
+                    "name": "Enable_Canvas",
+                    "type": "Button",
+                    "id": "8cb84539-07b6-4fdb-a524-d524b9845289",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4be62e5e-299e-4fc0-83ee-7833bea13285",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enable_Canvas",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
