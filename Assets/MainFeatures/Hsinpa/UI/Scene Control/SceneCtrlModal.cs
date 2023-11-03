@@ -13,10 +13,11 @@ using System.Threading.Tasks;
 using Hsinpa.Static;
 using UnityEngine.Rendering; // .Universal for urp
 using UnityEngine.Rendering.Universal;
+using UnityEngine.EventSystems;
 
 namespace Hsinpa.UI
 {
-    public class SceneCtrlModal : Modal
+    public class SceneCtrlModal : Modal, IPointerClickHandler
     {
         [Header("Scene Selector")]
         [SerializeField]
@@ -40,6 +41,9 @@ namespace Hsinpa.UI
 
         [SerializeField]
         private Button color_adjustment;
+
+        [SerializeField]
+        private FlexibleColorPicker FColorPicker;
 
         [Header("Bottom")]
         [SerializeField]
@@ -70,6 +74,10 @@ namespace Hsinpa.UI
             contrast_slider.onValueChanged.AddListener(OnContrastToggleChange);
 
             day_night_toggle.onValueChanged.AddListener(OnDayNightToggleChange);
+            FColorPicker.onColorChange.AddListener(OnColorToggleChange);
+            color_adjustment.onClick.AddListener(() => {
+                FColorPicker.gameObject.SetActive(!FColorPicker.gameObject.activeSelf);
+            });
         }
 
         public override void Show(bool isShow)
@@ -126,17 +134,28 @@ namespace Hsinpa.UI
             float intensity = (Mathf.Lerp(StaticFlag.Config.FOG_INTENSITY_MIN, StaticFlag.Config.FOG_INTENSITY_MAX, fog_intensity_normalize));
             RenderSettings.fogDensity = intensity;
 
-            //Contrast
+            // Post processing Contrast & Saturate
             _volume = GameObject.FindFirstObjectByType<Volume>();
             if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
+                //Contrast
                 float contrastValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.ContrastTogglePref, 0.5f);
-                float saturateValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.SaturateTogglePref, 0.5f);
-
                 contrast_slider.SetValueWithoutNotify(contrastValue);
-                saturate_slider.SetValueWithoutNotify(saturateValue);
-
                 colorAdjust.contrast.value = RescaleVariable(contrastValue, scale: 100);
+
+                //Saturation
+                float saturateValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.SaturateTogglePref, 0.5f);
+                saturate_slider.SetValueWithoutNotify(saturateValue);
                 colorAdjust.saturation.value = RescaleVariable(saturateValue, scale: 100);
+
+                //Color filter
+                float color_r = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_RTogglePref, 1);
+                float color_g = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_GTogglePref, 1);
+                float color_b = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_BTogglePref, 1);
+
+                colorAdjust.colorFilter.value = new Color(color_r, color_g, color_b);
+                color_adjustment.targetGraphic.color = colorAdjust.colorFilter.value;
+
+                FColorPicker.SetColor(colorAdjust.colorFilter.value);
             }
         }
 
@@ -198,11 +217,20 @@ namespace Hsinpa.UI
             PlayerPrefs.SetFloat(StaticFlag.PlayerPref.Color_GTogglePref, color.g);
             PlayerPrefs.SetFloat(StaticFlag.PlayerPref.Color_BTogglePref, color.b);
 
+            if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
+                colorAdjust.colorFilter.value = color;
+                color_adjustment.targetGraphic.color = color;
+            }
+
             PlayerPrefs.Save();
         }
 
         private float RescaleVariable(float value, float scale) {
             return ((value * 2) - 1) * scale;
+        }
+
+        public void OnPointerClick(PointerEventData eventData) {
+            FColorPicker.gameObject.SetActive(false);
         }
         #endregion
     }
