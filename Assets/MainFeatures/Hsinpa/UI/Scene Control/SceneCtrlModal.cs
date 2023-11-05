@@ -14,6 +14,7 @@ using Hsinpa.Static;
 using UnityEngine.Rendering; // .Universal for urp
 using UnityEngine.Rendering.Universal;
 using UnityEngine.EventSystems;
+using Funly.SkyStudio;
 
 namespace Hsinpa.UI
 {
@@ -58,6 +59,8 @@ namespace Hsinpa.UI
         public List<string> Scene_List => scene_list;
 
         private Volume _volume;
+        private TimeOfDayController _timeOfDayController;
+        private float night_value = 0.21f, day_value = 0.62f;
 
         protected override void Start() {
             addressableSceneManagement = new AddressableSceneManagement();
@@ -124,10 +127,6 @@ namespace Hsinpa.UI
         }
 
         private void SetOtherConfiguration() {
-            // Day Night Toggle
-            bool day_night_bool = PlayerPrefs.GetInt(StaticFlag.PlayerPref.DayNightTogglePref, 0) == 0;
-            day_night_toggle.isOn = (day_night_bool);
-
             // Fog intensity
             float fog_intensity_normalize = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.FogIntensityPref, 0);
             fog_intensity_slider.SetValueWithoutNotify(fog_intensity_normalize);
@@ -156,6 +155,15 @@ namespace Hsinpa.UI
                 color_adjustment.targetGraphic.color = colorAdjust.colorFilter.value;
 
                 FColorPicker.SetColor(colorAdjust.colorFilter.value);
+            }
+
+            // Day Night Toggle
+            _timeOfDayController = GameObject.FindFirstObjectByType<TimeOfDayController>();
+            if (_timeOfDayController != null) {
+                 int day_night_switch = PlayerPrefs.GetInt(StaticFlag.PlayerPref.DayNightTogglePref, 1);
+
+                _timeOfDayController.skyTime = Mathf.Lerp(night_value, day_value, day_night_switch);
+                day_night_toggle.SetIsOnWithoutNotify(day_night_switch == 1);
             }
         }
 
@@ -190,7 +198,14 @@ namespace Hsinpa.UI
         }
 
         private void OnDayNightToggleChange(bool p_value) {
-            PlayerPrefs.SetInt(StaticFlag.PlayerPref.DayNightTogglePref, p_value ? 1 : 0);
+            int day_night_switch = p_value ? 1 : 0;
+
+            PlayerPrefs.SetInt(StaticFlag.PlayerPref.DayNightTogglePref, day_night_switch);
+
+            if (_timeOfDayController != null) {
+                _timeOfDayController.skyTime = Mathf.Lerp(night_value, day_value, day_night_switch);
+            }
+
             PlayerPrefs.Save();
         }
 
