@@ -105,7 +105,7 @@ Material:
     - _CloudCubemapNormalHeight: 0
     - _CloudCubemapNormalRotationSpeed: 0.01
     - _CloudCubemapRotationSpeed: 0.01
-    - _CloudDensity: 0.598
+    - _CloudDensity: 0.38163418
     - _CloudDirection: 1
     - _CloudFadeAmount: 1
     - _CloudFadePosition: 0.97
@@ -162,7 +162,7 @@ Material:
     - _SunAlpha: 1
     - _SunEdgeFade: 0.8
     - _SunHDRBoost: 1
-    - _SunRadius: 0.2966668
+    - _SunRadius: 0
     - _SunSpriteAnimationSpeed: 1
     - _SunSpriteItemCount: 1
     m_Colors:
