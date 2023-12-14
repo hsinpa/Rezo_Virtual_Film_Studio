@@ -15,6 +15,8 @@ using UnityEngine.Rendering; // .Universal for urp
 using UnityEngine.Rendering.Universal;
 using UnityEngine.EventSystems;
 using Funly.SkyStudio;
+using Hsinpa.Event;
+using Hsinpa.GameScene;
 
 namespace Hsinpa.UI
 {
@@ -60,6 +62,8 @@ namespace Hsinpa.UI
 
         private Volume _volume;
         private TimeOfDayController _timeOfDayController;
+        private LightSwitchListener[] _lightSwitchListeners;
+
         private float night_value = 0.21f, day_value = 0.62f;
 
         protected override void Start() {
@@ -159,6 +163,7 @@ namespace Hsinpa.UI
 
             // Day Night Toggle
             _timeOfDayController = GameObject.FindFirstObjectByType<TimeOfDayController>();
+            _lightSwitchListeners = GameObject.FindObjectsOfType<LightSwitchListener>(includeInactive: true);
             if (_timeOfDayController != null) {
                  int day_night_switch = PlayerPrefs.GetInt(StaticFlag.PlayerPref.DayNightTogglePref, 1);
 
@@ -184,6 +189,7 @@ namespace Hsinpa.UI
         private async void OnSceneLoadClick() {
             if (string.IsNullOrEmpty(cache_key)) return;
 
+            SimpleEventSystem.Dispose();
             bool result =  await LoadScene(cache_key);
 
             if (result) Modals.instance.Close();
@@ -204,6 +210,14 @@ namespace Hsinpa.UI
 
             if (_timeOfDayController != null) {
                 _timeOfDayController.skyTime = Mathf.Lerp(night_value, day_value, day_night_switch);
+
+                SimpleEventSystem.Send(MessageEventFlag.HsinpaEvent.UIEVent.DayLightSwitchEvent, p_value);
+            }
+
+            if (_lightSwitchListeners != null) { 
+                foreach (var lightListener in _lightSwitchListeners) {
+                    lightListener.SetVisibility(p_value);
+                }
             }
 
             PlayerPrefs.Save();
