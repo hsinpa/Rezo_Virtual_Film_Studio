@@ -28,6 +28,7 @@ MonoBehaviour:
   - CloudColor1Key
   - SunPositionKey
   - MoonPositionKey
+  - MoonLightIntensityKey
   keyframeGroups:
     m_ColorGroup:
       m_Keys:
@@ -78,17 +79,17 @@ MonoBehaviour:
           m_Time: 0.24370594
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.625, g: 0.8137932, b: 1, a: 1}
+          color: {r: 0.15895337, g: 0.4437801, b: 0.7169812, a: 1}
         - m_Id: 1f143738-008b-4b2d-8d98-c333a035784a
           m_Time: 0.33385336
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.32352942, g: 0.5241379, b: 1, a: 1}
+          color: {r: 0.19290671, g: 0.4566631, b: 0.8018868, a: 1}
         - m_Id: 23e155cb-4182-460d-b9e9-5f90248da904
           m_Time: 0.6294852
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.32352942, g: 0.5241379, b: 1, a: 1}
+          color: {r: 0.19607843, g: 0.45882353, b: 0.8039216, a: 1}
         - m_Id: 8d3af4ea-f723-4840-8ba8-dce496fc8119
           m_Time: 0.6767372
           m_InterpolationCurve: 0
@@ -121,12 +122,12 @@ MonoBehaviour:
           m_Time: 0.21752267
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 0.7647059, b: 0.7647059, a: 1}
+          color: {r: 0.9245283, g: 0.58873266, b: 0.6381807, a: 1}
         - m_Id: 3d651e3e-448b-4469-b663-99737925ae2e
-          m_Time: 0.26787513
+          m_Time: 0.26771653
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 0.7647059, b: 0.7647059, a: 1}
+          color: {r: 0.44459772, g: 0.7656131, b: 0.9150943, a: 1}
         - m_Id: e547a1b4-25ea-4039-aca5-d2ddf25c6cb6
           m_Time: 0.33307332
           m_InterpolationCurve: 0
@@ -263,7 +264,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 1, b: 1, a: 1}
+          color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
         m_Name: Fog Color
         m_Id: 4d2977f2-b2eb-465b-8ad6-2e4116e1b594
       - keyframes:
@@ -278,10 +279,10 @@ MonoBehaviour:
           m_InterpolationDirection: 0
           color: {r: 0.8088235, g: 0.41835698, b: 0, a: 1}
         - m_Id: 1bf0c330-d584-4566-a1e5-c12e5a1a8df0
-          m_Time: 0.4960091
+          m_Time: 0.4943132
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 1, b: 1, a: 1}
+          color: {r: 1, g: 0.94509804, b: 0.7607843, a: 1}
         - m_Id: a7288c99-29fa-489c-bde7-dcdf62c0d1b7
           m_Time: 0.7194983
           m_InterpolationCurve: 0
@@ -304,7 +305,7 @@ MonoBehaviour:
           m_Time: 0.49942988
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 0.87829614, b: 0.5588235, a: 1}
+          color: {r: 1, g: 0.87058824, b: 0.68235296, a: 1}
         - m_Id: fd81f9b5-a0d0-4ffc-93df-d01f449cac87
           m_Time: 0.6955923
           m_InterpolationCurve: 0
@@ -340,7 +341,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 1, b: 1, a: 1}
+          color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
         m_Name: Moon Light Color
         m_Id: 358d53d3-035c-4421-a7c9-87db1d8d316d
       - keyframes:
@@ -611,7 +612,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: -0.123
+          value: -0.52
         m_Name: Horizon Position
         m_Id: e565a7de-0c1f-4f18-a0da-b1ebf5ab1ee2
         minValue: -1
@@ -736,7 +737,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.181
+          value: 0.198
         m_Name: Fog Density
         m_Id: bf9cc737-8fa3-42d8-a168-8add53cea841
         minValue: 0
@@ -758,15 +759,15 @@ MonoBehaviour:
           m_InterpolationDirection: 0
           value: 0
         - m_Id: a814f23c-9410-41f0-bc0d-cbf4b0b7f8c7
-          m_Time: 0.17826796
+          m_Time: 0.18089262
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.2966668
+          value: 0.05222237
         - m_Id: 8164052c-0934-44fa-adf9-7f268df00096
           m_Time: 0.7653575
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.2966668
+          value: 0.07444459
         - m_Id: 403eabb0-ec3a-451e-b9f7-19c03e27842f
           m_Time: 0.82246196
           m_InterpolationCurve: 0
@@ -803,20 +804,20 @@ MonoBehaviour:
           m_InterpolationDirection: 0
           value: 0
         - m_Id: cc715b80-79ed-48a4-af55-1fa4aff4f25e
-          m_Time: 0.18431373
+          m_Time: 0.1878133
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.83
+          value: 0.16333342
         - m_Id: ba784b54-a479-4a30-829a-33ab6c5d06de
-          m_Time: 0.49414298
+          m_Time: 0.48889363
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.94110787
+          value: 0.60777456
         - m_Id: bdf2f04c-7561-4ce5-a9b6-9a6aebb44d1c
-          m_Time: 0.703268
+          m_Time: 0.7023931
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.71888566
+          value: 0.052219033
         - m_Id: 0fa51303-46bf-48db-b41c-3ff6d047915d
           m_Time: 0.8644605
           m_InterpolationCurve: 0
@@ -866,7 +867,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.1
+          value: 0.045
         m_Name: Moon Size
         m_Id: 790f5e17-562d-4e94-aa45-7fa6cdcf5592
         minValue: 0
@@ -896,7 +897,22 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.25
+          value: 0.58222115
+        - m_Id: 42b1a146-e04c-4b64-8516-aa39b328f14c
+          m_Time: 0.07611549
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          value: 0.13777673
+        - m_Id: 98c68851-ed9f-4fb6-b9f4-b1c43ca7525d
+          m_Time: 0.7646544
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          value: 0
+        - m_Id: 7109acc5-fa94-46de-9473-863e18e47727
+          m_Time: 0.8565179
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          value: 0.111111104
         m_Name: Moon Light Intensity
         m_Id: 45abd8e9-4d22-4e78-bcab-a36a4552b0aa
         minValue: 0

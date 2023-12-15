@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2904268867459602122
+--- !u!114 &-2761442358069877269
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   indirectIntensity:
     m_OverrideState: 1
-    m_Value: 0.59
+    m_Value: 0.78
   indirectDistanceAttenuation:
     m_OverrideState: 0
     m_Value: 0
@@ -74,22 +74,22 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   rayMaxLength:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 8
   rayMaxSamples:
-    m_OverrideState: 1
-    m_Value: 24
+    m_OverrideState: 0
+    m_Value: 32
   rayJitter:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   thickness:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   rayBinarySearch:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   fallbackReuseRays:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   rayReuse:
     m_OverrideState: 1
@@ -113,13 +113,13 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 8
   smoothing:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 3
   temporalReprojection:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   temporalResponseSpeed:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 12
   temporalCameraTranslationResponse:
     m_OverrideState: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.2
   showInEditMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   showInSceneView:
     m_OverrideState: 0
@@ -193,6 +193,46 @@ MonoBehaviour:
   compareLineWidth:
     m_OverrideState: 0
     m_Value: 0.002
+--- !u!114 &-2173268087140489963
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
+  m_Name: Tonemapping
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
+  neutralHDRRangeReductionMode:
+    m_OverrideState: 0
+    m_Value: 2
+  acesPreset:
+    m_OverrideState: 0
+    m_Value: 3
+  hueShiftAmount:
+    m_OverrideState: 0
+    m_Value: 0
+  detectPaperWhite:
+    m_OverrideState: 0
+    m_Value: 0
+  paperWhite:
+    m_OverrideState: 0
+    m_Value: 300
+  detectBrightnessLimits:
+    m_OverrideState: 0
+    m_Value: 1
+  minNits:
+    m_OverrideState: 0
+    m_Value: 0.005
+  maxNits:
+    m_OverrideState: 0
+    m_Value: 1000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,96 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 8494958738249761165}
-  - {fileID: 101112725128454941}
-  - {fileID: -2904268867459602122}
---- !u!114 &101112725128454941
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 630a38b420b39c040b1469b07a79e7d6, type: 3}
-  m_Name: SSGIVolumeComponent
-  m_EditorClassIdentifier: 
-  active: 0
-  PreMultiply:
-    m_OverrideState: 0
-    m_Value: 0.25
-  FinalContrast:
-    m_OverrideState: 0
-    m_Value: 1
-  FinalIntensity:
-    m_OverrideState: 0
-    m_Value: 1.25
-  LightFalloffDistance:
-    m_OverrideState: 0
-    m_Value: 1
-  LightIntensity:
-    m_OverrideState: 1
-    m_Value: 2
-  LightDirInfluence:
-    m_OverrideState: 0
-    m_Value: 0.95
-  NormalmapBoost:
-    m_OverrideState: 0
-    m_Value: 0.75
-  GITint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-  GIContrast:
-    m_OverrideState: 0
-    m_Value: 0.65
-  GISaturation:
-    m_OverrideState: 0
-    m_Value: 1
-  GIVibrance:
-    m_OverrideState: 0
-    m_Value: 0.5
-  FallbackDirectIntensity:
-    m_OverrideState: 0
-    m_Value: 0.25
-  FallbackDirectSaturation:
-    m_OverrideState: 0
-    m_Value: 1
-  FallbackDirectPower:
-    m_OverrideState: 0
-    m_Value: 2
-  SkyboxInfluence:
-    m_OverrideState: 0
-    m_Value: 1
-  ShadowIntensity:
-    m_OverrideState: 0
-    m_Value: 2.5
-  ShadowTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.06, g: 0.08, b: 0.12, a: 1}
-  ShadowExponential:
-    m_OverrideState: 0
-    m_Value: 0.3
-  ShadowContrast:
-    m_OverrideState: 0
-    m_Value: 0.05
-  ContactShadowsRange:
-    m_OverrideState: 0
-    m_Value: 0.45
-  ContactShadowsSoftKnee:
-    m_OverrideState: 0
-    m_Value: 0.25
-  CastedShadowsIntensity:
-    m_OverrideState: 0
-    m_Value: 10
-  CastedShadowsOmniDirectional:
-    m_OverrideState: 0
-    m_Value: 0.5
-  CastedShadowsRange:
-    m_OverrideState: 0
-    m_Value: 15
-  CastedShadowsSoftKnee:
-    m_OverrideState: 0
-    m_Value: 0.85
+  - {fileID: -2173268087140489963}
+  - {fileID: -2761442358069877269}
 --- !u!114 &8494958738249761165
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -311,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   contrast:
     m_OverrideState: 1
@@ -320,7 +272,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   saturation:
     m_OverrideState: 1

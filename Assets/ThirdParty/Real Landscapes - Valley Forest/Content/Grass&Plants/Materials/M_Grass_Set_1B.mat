@@ -9,8 +9,6 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Grass_Set_1B
   m_Shader: {fileID: 4800000, guid: 03f1ac56fe7b5d645affae2e0e22cb38, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _NORMALMAP
@@ -20,7 +18,6 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -86,19 +83,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaCutoff: 0.17
+    - _AlphaCutoff: 0.3
     - _BumpScale: 1
     - _Cutoff: 0.3
     - _DetailNormalMapScale: 1
-    - _DownwardForce: 0
+    - _DownwardForce: 2
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _FlipBackNormals: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.505
     - _GlossyReflections: 1
-    - _LeafFlutterScale: 0.1
-    - _LeafFlutterStrength: 0
+    - _LeafFlutterScale: 1
+    - _LeafFlutterStrength: 10
     - _Metallic: 0
     - _Mode: 1
     - _NormalScale: 1
@@ -107,30 +104,30 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SidewaysForce: -3.35
+    - _SidewaysForce: 1
     - _Smoothness: 0.336
     - _SmoothnessTextureChannel: 0
     - _SnowDelay: 0
     - _SnowMaskSharpness: 1.5
-    - _SnowMaxAmount: 0
-    - _SnowNormalsInfluence: 0
+    - _SnowMaxAmount: 2
+    - _SnowNormalsInfluence: 0.662
     - _SnowVertexAOInfluence: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TransAmbient: 0
-    - _TransDirect: 0
-    - _TransNormal: 0
+    - _TransDirect: 1
+    - _TransNormal: 0.5
     - _TransNormalDistortion: 0
-    - _TransScattering: 1
-    - _TransShadow: 0
+    - _TransScattering: 2.2
+    - _TransShadow: 1
     - _TransStrength: 1
     - _Translucency: 6
     - _TurbulenceStrength: 0
     - _UVSec: 0
     - _VertexAOStrength: 0
-    - _WindNoiseScale: 0
-    - _WindSpeed: 0
-    - _WindStrength: 0
+    - _WindNoiseScale: 0.4
+    - _WindSpeed: 4
+    - _WindStrength: 0.6
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
