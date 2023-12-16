@@ -105,7 +105,7 @@ Material:
     - _CloudCubemapNormalHeight: 0
     - _CloudCubemapNormalRotationSpeed: 0.01
     - _CloudCubemapRotationSpeed: 0.01
-    - _CloudDensity: 0.598
+    - _CloudDensity: 0.33133274
     - _CloudDirection: 1
     - _CloudFadeAmount: 1
     - _CloudFadePosition: 0.97
@@ -114,8 +114,8 @@ Material:
     - _CloudTextureTiling: 0.55
     - _DebugPointRadius: 0.03
     - _DebugPointsCount: 0
-    - _GradientFadeBegin: -0.52
-    - _GradientFadeEnd: -0.007000208
+    - _GradientFadeBegin: -0.188
+    - _GradientFadeEnd: 0.32499978
     - _GradientFadeMiddlePosition: 0.561
     - _HorizonFogDensity: 0.198
     - _HorizonFogLength: 0.141
@@ -162,7 +162,7 @@ Material:
     - _SunAlpha: 1
     - _SunEdgeFade: 0.8
     - _SunHDRBoost: 1
-    - _SunRadius: 0.05889245
+    - _SunRadius: 0
     - _SunSpriteAnimationSpeed: 1
     - _SunSpriteItemCount: 1
     m_Colors:
