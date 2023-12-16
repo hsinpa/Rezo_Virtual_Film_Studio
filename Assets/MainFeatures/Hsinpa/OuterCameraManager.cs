@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Hsinpa.Type.GeneralTypeStruct;
@@ -9,6 +11,9 @@ namespace Hsinpa.Character {
     {
         [SerializeField, Range(1f, 150)]
         private float translation_sensitivity;
+
+        [SerializeField, Range(1f, 50)]
+        private float inner_camera_translation_sensitivity;
 
         [SerializeField, Range(1f, 20)]
         private float rotation_sensitivity;
@@ -32,6 +37,8 @@ namespace Hsinpa.Character {
 
         private bool is_ready;
         private float record_time;
+        private bool can_manual_look_flag = false;
+        private Vector3 outer_cache_position = new Vector3(0, 0, 0);
 
         public void Setup(InputAssets.PlayerActions playerAction) {
             mPlayerAction = playerAction;
@@ -48,6 +55,9 @@ namespace Hsinpa.Character {
             mPlayerAction.Move.performed += OnPlayerMove;
             mPlayerAction.Move.canceled += OnPlayerMove;
             mPlayerAction.Look.performed += OnPlayerLook;
+            mPlayerAction.LookTrigger.performed += OnLookTrigger;
+            mPlayerAction.LookTrigger.canceled += OnLookCancel;
+
             mPlayerAction.Zoom.performed += OnCameraZoom;
 
             Type.GeneralTypeStruct.GlobalConfigFileStruct = Type.GeneralTypeStruct.SyncData();
@@ -62,11 +72,13 @@ namespace Hsinpa.Character {
             var coming_euler = rotation.eulerAngles;
             var ignore_z_euler = Quaternion.Euler(coming_euler.x, coming_euler.y, 0);
 
+            outer_cache_position = mCameraTransform.position;
             mCameraTransform.rotation = ignore_z_euler;
         }
 
         private void Update() {
             PerformMovement();
+            PerformInnerMovement();
             UpdateExternalConfig();
         }
 
@@ -113,9 +125,23 @@ namespace Hsinpa.Character {
         private void PerformMovement() { 
             if (!is_ready) return;
 
+            if (movementVector.magnitude < 0.01f) return;
+
             Vector3 position = mCameraTransform.position;
             position += ((innerCameraTransform.forward * movementVector.y) + (innerCameraTransform.right * movementVector.x)) * translation_sensitivity * Time.deltaTime;
             mCameraTransform.position = position;
+            outer_cache_position = mCameraTransform.position;
+        }
+
+        private void PerformInnerMovement() {
+            if (!is_ready) return;
+
+            var local_position = innerCameraTransform.localPosition * inner_camera_translation_sensitivity;
+                local_position.y = innerCameraTransform.localPosition.y;
+
+            var offset = Matrix4x4.Rotate(innerCameraTransform.rotation).MultiplyPoint3x4(local_position);
+
+            mCameraTransform.position = outer_cache_position + (local_position);
         }
 
         private Vector3 PositionTransform(Vector3 teleport_position) {
@@ -139,6 +165,7 @@ namespace Hsinpa.Character {
         }
 
         private void OnPlayerLook(InputAction.CallbackContext callbackContext) {
+            if (!can_manual_look_flag) return;
             Vector2 vector = callbackContext.ReadValue<Vector2>();
             int maxYAngle = 350;
 
@@ -149,6 +176,15 @@ namespace Hsinpa.Character {
             currentRotationY = Mathf.Clamp(currentRotationY, -maxYAngle, maxYAngle);
             mCameraTransform.rotation = Quaternion.Euler(currentRotationY, currentRotationX, 0);
         }
+
+        private void OnLookTrigger(InputAction.CallbackContext callbackContext) {
+            can_manual_look_flag = true;
+        }
+
+        private void OnLookCancel(InputAction.CallbackContext callbackContext) {
+            can_manual_look_flag = false;
+        }
+
         #endregion
 
     }
