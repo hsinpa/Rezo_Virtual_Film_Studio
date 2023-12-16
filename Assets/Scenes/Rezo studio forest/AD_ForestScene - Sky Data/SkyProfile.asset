@@ -132,12 +132,12 @@ MonoBehaviour:
           m_Time: 0.33307332
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.21085638, g: 0.7092533, b: 0.9558824, a: 1}
+          color: {r: 0.48273405, g: 0.76542693, b: 0.9056604, a: 1}
         - m_Id: 3529a33e-9901-4896-9829-7d2aa5207479
           m_Time: 0.6287594
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.21085638, g: 0.7092533, b: 0.9558824, a: 1}
+          color: {r: 0.3920879, g: 0.6912295, b: 0.8396226, a: 1}
         - m_Id: 13253a53-981c-41f5-9ab7-db45dcf18f72
           m_Time: 0.67628706
           m_InterpolationCurve: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
           m_Time: 0.75751877
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.8941177, g: 0.7607844, b: 0.5176471, a: 1}
+          color: {r: 0.8584906, g: 0.5436111, b: 0.2956123, a: 1}
         - m_Id: 655a0c22-b2fb-4aa3-aba5-c8dcfbff0089
           m_Time: 0.825188
           m_InterpolationCurve: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
           m_Time: 0.4943132
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 0.94509804, b: 0.7607843, a: 1}
+          color: {r: 0.9622642, g: 0.74183726, b: 0.39489147, a: 1}
         - m_Id: a7288c99-29fa-489c-bde7-dcdf62c0d1b7
           m_Time: 0.7194983
           m_InterpolationCurve: 0
@@ -612,7 +612,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: -0.52
+          value: -0.188
         m_Name: Horizon Position
         m_Id: e565a7de-0c1f-4f18-a0da-b1ebf5ab1ee2
         minValue: -1
@@ -809,10 +809,10 @@ MonoBehaviour:
           m_InterpolationDirection: 0
           value: 0.16333342
         - m_Id: ba784b54-a479-4a30-829a-33ab6c5d06de
-          m_Time: 0.48889363
+          m_Time: 0.47828358
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.60777456
+          value: 0.49666345
         - m_Id: bdf2f04c-7561-4ce5-a9b6-9a6aebb44d1c
           m_Time: 0.7023931
           m_InterpolationCurve: 0
@@ -2083,21 +2083,21 @@ MonoBehaviour:
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
           spherePoint:
-            horizontalRotation: 0
+            horizontalRotation: -0.855
             verticalRotation: 0
         - m_Id: 98ed3ddb-170e-4d66-997b-7e5808c76348
-          m_Time: 0.4376272
+          m_Time: 0.43501326
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
           spherePoint:
             horizontalRotation: 0
-            verticalRotation: 1.57
+            verticalRotation: 1.5707964
         - m_Id: c7105fb7-bb32-4e17-ac61-b6518728aca1
-          m_Time: 0.6877539
+          m_Time: 0.6825818
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
           spherePoint:
-            horizontalRotation: 3.14
+            horizontalRotation: 2.393
             verticalRotation: 0
         - m_Id: a7b1a323-8b8d-4846-8f6e-193217bdecb3
           m_Time: 0.93788064
@@ -2110,11 +2110,11 @@ MonoBehaviour:
         m_Id: 38fe1794-e035-4404-9579-a0a468664a60
       - keyframes:
         - m_Id: d3f0a2f0-211b-4e10-9eb1-fb6349dcd175
-          m_Time: 0.18966722
+          m_Time: 0.18656057
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
           spherePoint:
-            horizontalRotation: 3.14
+            horizontalRotation: 2.33
             verticalRotation: 0
         - m_Id: 27e9716d-41e4-4d5b-a089-b6c9a185f349
           m_Time: 0.43979394
@@ -2128,7 +2128,7 @@ MonoBehaviour:
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
           spherePoint:
-            horizontalRotation: 0
+            horizontalRotation: -0.837
             verticalRotation: 0
         - m_Id: 0a580e86-5dd7-4e1d-bb77-d6497a875c36
           m_Time: 0.9395405
