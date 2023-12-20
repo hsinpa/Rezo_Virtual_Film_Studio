@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Grass_Set_2
   m_Shader: {fileID: 4800000, guid: 03f1ac56fe7b5d645affae2e0e22cb38, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _NORMALMAP
@@ -18,6 +20,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -94,8 +97,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.505
     - _GlossyReflections: 1
-    - _LeafFlutterScale: 1
-    - _LeafFlutterStrength: 0.4
+    - _LeafFlutterScale: 0.2
+    - _LeafFlutterStrength: 0.2
     - _Metallic: 0
     - _Mode: 1
     - _NormalScale: 2
@@ -125,9 +128,9 @@ Material:
     - _TurbulenceStrength: 0
     - _UVSec: 0
     - _VertexAOStrength: 0
-    - _WindNoiseScale: 0.25
-    - _WindSpeed: 2
-    - _WindStrength: 0.3
+    - _WindNoiseScale: 2
+    - _WindSpeed: 1
+    - _WindStrength: 0.1
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:

@@ -29,6 +29,7 @@ MonoBehaviour:
   - SunPositionKey
   - MoonPositionKey
   - MoonLightIntensityKey
+  - MoonColorIntensityKey
   keyframeGroups:
     m_ColorGroup:
       m_Keys:
@@ -809,10 +810,10 @@ MonoBehaviour:
           m_InterpolationDirection: 0
           value: 0.16333342
         - m_Id: ba784b54-a479-4a30-829a-33ab6c5d06de
-          m_Time: 0.47828358
-          m_InterpolationCurve: 0
+          m_Time: 0.47919515
+          m_InterpolationCurve: 1
           m_InterpolationDirection: 0
-          value: 0.49666345
+          value: 0.44444442
         - m_Id: bdf2f04c-7561-4ce5-a9b6-9a6aebb44d1c
           m_Time: 0.7023931
           m_InterpolationCurve: 0
@@ -897,7 +898,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.58222115
+          value: 0.3333333
         - m_Id: 42b1a146-e04c-4b64-8516-aa39b328f14c
           m_Time: 0.07611549
           m_InterpolationCurve: 0
@@ -909,10 +910,10 @@ MonoBehaviour:
           m_InterpolationDirection: 0
           value: 0
         - m_Id: 7109acc5-fa94-46de-9473-863e18e47727
-          m_Time: 0.8565179
+          m_Time: 0.85651785
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.111111104
+          value: 0
         m_Name: Moon Light Intensity
         m_Id: 45abd8e9-4d22-4e78-bcab-a36a4552b0aa
         minValue: 0
