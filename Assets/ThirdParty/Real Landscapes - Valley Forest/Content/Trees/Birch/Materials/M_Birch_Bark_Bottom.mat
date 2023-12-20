@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Birch_Bark_Bottom
   m_Shader: {fileID: 4800000, guid: 72b02e0011deb944983b7fedd0400014, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -17,6 +19,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -200,8 +203,8 @@ Material:
     - _TurbulenceStrength: 1
     - _UVSec: 0
     - _WindNoiseScale: 0.3
-    - _WindSpeed: 2
-    - _WindStrength: 1
+    - _WindSpeed: 1
+    - _WindStrength: 0.2
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
