@@ -157,6 +157,8 @@ namespace MultiProjectorWarpSystem
         }
         public void UpdateCursor()
         {
+            if (calibrationManager == null || calibrationManager.mouseSelectedHighlight == null) return;
+
             Cursor.visible = showMouseCursor;
             calibrationManager.mouseSelectedHighlight.SetActive(showMouseCursor);
         }
@@ -348,6 +350,9 @@ namespace MultiProjectorWarpSystem
             float compressedArcAngle;
             float offsetAngle;
 
+            near = 0.1f;
+            far = 200;
+            projectorCount = 2;
 
             // Near far adjustments only for orthographic cameras
             switch (arrangement)
@@ -417,6 +422,7 @@ namespace MultiProjectorWarpSystem
                     startAngle = -(fieldOfView / 2f) + (singleFieldOfViewH / 2f);
                     compressedArcAngle = -startAngle * 2f;
 
+                    Debug.Log("sourceCameras.Count " + sourceCameras.Count);
                     for (int i = 0; i < sourceCameras.Count; i++)
                     {
                         int index = i;
