@@ -71,7 +71,7 @@ MonoBehaviour:
   active: 1
   indirectIntensity:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 0
   indirectDistanceAttenuation:
     m_OverrideState: 1
     m_Value: 1
