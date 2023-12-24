@@ -14,13 +14,16 @@ namespace Hsinpa.Ctrl
 
         public System.Action SceneActiveEvent;
 
-        void Start() {
+        void Awake() {
             _modals = Modals.instance;
-
-            LoadDefaultScene();
         }
 
-        private async void LoadDefaultScene() {
+        public void ReloadSceneConfig() {
+            SceneCtrlModal sceneCtrlModal = _modals.GetModal<SceneCtrlModal>();
+            sceneCtrlModal.Setup();
+        }
+
+        public async void LoadDefaultScene() {
             await Task.Yield();
 
             SceneCtrlModal sceneCtrlModal = _modals.GetModal<SceneCtrlModal>();

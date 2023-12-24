@@ -44,6 +44,8 @@ namespace Hsinpa.Main
             mIputActions.Plugin_Projector.Enable_Canvas.started += OnUIProjectionEvent;
 
             RegisterInput();
+
+            rootSceneCtrl.LoadDefaultScene();
         }
 
         #region Input Callback
@@ -58,6 +60,8 @@ namespace Hsinpa.Main
 
             var target_point = mInterestPointManager.GetTrasformPoint(0);
             if (target_point != null) outerCameraManager.Teleport(target_point.position, target_point.rotation);
+
+            rootSceneCtrl.ReloadSceneConfig();
         }
 
         private void OnTeleportEvent(InputAction.CallbackContext callbackContext) {

@@ -166,9 +166,10 @@ namespace Hsinpa.UI
             _lightSwitchListeners = GameObject.FindObjectsOfType<LightSwitchListener>(includeInactive: true);
             if (_timeOfDayController != null) {
                  int day_night_switch = PlayerPrefs.GetInt(StaticFlag.PlayerPref.DayNightTogglePref, 1);
-
                 _timeOfDayController.skyTime = Mathf.Lerp(night_value, day_value, day_night_switch);
                 day_night_toggle.SetIsOnWithoutNotify(day_night_switch == 1);
+
+                OnDayNightToggleChange(day_night_switch == 1);
             }
         }
 
