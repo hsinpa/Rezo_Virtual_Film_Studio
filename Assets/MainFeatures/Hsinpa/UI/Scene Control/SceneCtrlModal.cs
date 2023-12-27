@@ -64,7 +64,7 @@ namespace Hsinpa.UI
         private TimeOfDayController _timeOfDayController;
         private LightSwitchListener[] _lightSwitchListeners;
 
-        private float night_value = 0.21f, day_value = 0.62f;
+        private float night_value = 0.8f, day_value = 0.45f;
 
         protected override void Start() {
             addressableSceneManagement = new AddressableSceneManagement();
