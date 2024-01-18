@@ -16,12 +16,16 @@ namespace Hsinpa.Type
             public float Project_1_Pos_Z;
 
             public float Project_1_Rot_Y;
+            public float Project_1_Rot_X;
+            public float Project_1_Rot_Z;
 
             public float Project_2_Pos_X;
             public float Project_2_Pos_Y;
             public float Project_2_Pos_Z;
 
             public float Project_2_Rot_Y;
+            public float Project_2_Rot_X;
+            public float Project_2_Rot_Z;
 
             public bool SyncData;
         }

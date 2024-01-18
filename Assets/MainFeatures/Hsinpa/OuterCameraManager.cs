@@ -1,3 +1,4 @@
+using HTC.UnityPlugin.Vive;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,10 @@ namespace Hsinpa.Character {
 
         [SerializeField]
         private Transform innerCameraTransform;
+
+        [SerializeField]
+        private VivePoseTracker vivePoseTracker;
+
 
         private float fov_min_range_config = 30;
         private float fov_max_range_config = 65;
@@ -101,9 +106,9 @@ namespace Hsinpa.Character {
                 );
 
                 mCamera[0].transform.localRotation = Quaternion.Euler( new Vector3(
-                    mCameraTransformConfigs[0].rotation.x,
+                    mCameraTransformConfigs[0].rotation.x + globalConfigFileStruct.Project_1_Rot_X,
                     mCameraTransformConfigs[0].rotation.y + globalConfigFileStruct.Project_1_Rot_Y,
-                    mCameraTransformConfigs[0].rotation.z
+                    mCameraTransformConfigs[0].rotation.z + globalConfigFileStruct.Project_1_Rot_Z
                     ));
             }
 
@@ -115,9 +120,9 @@ namespace Hsinpa.Character {
                 );
 
                 mCamera[1].transform.localRotation = Quaternion.Euler(new Vector3(
-                    mCameraTransformConfigs[1].rotation.x,
+                    mCameraTransformConfigs[1].rotation.x + globalConfigFileStruct.Project_2_Rot_X,
                     mCameraTransformConfigs[1].rotation.y + globalConfigFileStruct.Project_2_Rot_Y,
-                    mCameraTransformConfigs[1].rotation.z
+                    mCameraTransformConfigs[1].rotation.z + globalConfigFileStruct.Project_2_Rot_Z
                     ));
             }
         }
