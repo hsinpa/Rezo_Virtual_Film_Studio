@@ -353,6 +353,7 @@ namespace MultiProjectorWarpSystem
             near = 0.1f;
             far = 200;
             projectorCount = 2;
+            fieldOfView = 120;
 
             // Near far adjustments only for orthographic cameras
             switch (arrangement)

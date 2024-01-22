@@ -27,7 +27,7 @@ namespace Hsinpa.Character {
 
 
         private float fov_min_range_config = 30;
-        private float fov_max_range_config = 65;
+        private float fov_max_range_config = 90;
 
         private Transform mCameraTransform;
         private Camera[] mCamera;
