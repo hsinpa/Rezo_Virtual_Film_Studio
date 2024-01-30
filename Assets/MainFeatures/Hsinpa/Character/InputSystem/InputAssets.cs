@@ -401,6 +401,15 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Calibration_UI"",
+                    ""type"": ""Button"",
+                    ""id"": ""96a410ec-a2b3-4c8a-801d-8babc514b622"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -423,6 +432,17 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mask_UI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""633d8db5-4751-40d0-bf53-ffba9e5c8f46"",
+                    ""path"": ""<Keyboard>/comma"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Calibration_UI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -520,6 +540,7 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Scene_UI = m_UI.FindAction("Scene_UI", throwIfNotFound: true);
         m_UI_Mask_UI = m_UI.FindAction("Mask_UI", throwIfNotFound: true);
+        m_UI_Calibration_UI = m_UI.FindAction("Calibration_UI", throwIfNotFound: true);
         // Plugin_Projector
         m_Plugin_Projector = asset.FindActionMap("Plugin_Projector", throwIfNotFound: true);
         m_Plugin_Projector_Enable_Canvas = m_Plugin_Projector.FindAction("Enable_Canvas", throwIfNotFound: true);
@@ -680,12 +701,14 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Scene_UI;
     private readonly InputAction m_UI_Mask_UI;
+    private readonly InputAction m_UI_Calibration_UI;
     public struct UIActions
     {
         private @InputAssets m_Wrapper;
         public UIActions(@InputAssets wrapper) { m_Wrapper = wrapper; }
         public InputAction @Scene_UI => m_Wrapper.m_UI_Scene_UI;
         public InputAction @Mask_UI => m_Wrapper.m_UI_Mask_UI;
+        public InputAction @Calibration_UI => m_Wrapper.m_UI_Calibration_UI;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -701,6 +724,9 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
             @Mask_UI.started += instance.OnMask_UI;
             @Mask_UI.performed += instance.OnMask_UI;
             @Mask_UI.canceled += instance.OnMask_UI;
+            @Calibration_UI.started += instance.OnCalibration_UI;
+            @Calibration_UI.performed += instance.OnCalibration_UI;
+            @Calibration_UI.canceled += instance.OnCalibration_UI;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -711,6 +737,9 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
             @Mask_UI.started -= instance.OnMask_UI;
             @Mask_UI.performed -= instance.OnMask_UI;
             @Mask_UI.canceled -= instance.OnMask_UI;
+            @Calibration_UI.started -= instance.OnCalibration_UI;
+            @Calibration_UI.performed -= instance.OnCalibration_UI;
+            @Calibration_UI.canceled -= instance.OnCalibration_UI;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -824,6 +853,7 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
     {
         void OnScene_UI(InputAction.CallbackContext context);
         void OnMask_UI(InputAction.CallbackContext context);
+        void OnCalibration_UI(InputAction.CallbackContext context);
     }
     public interface IPlugin_ProjectorActions
     {

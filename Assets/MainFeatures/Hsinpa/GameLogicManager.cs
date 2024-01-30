@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Hsinpa.Main
 {
@@ -22,12 +23,16 @@ namespace Hsinpa.Main
         [SerializeField]
         private Canvas[] maskCanvas;
 
+        [SerializeField]
+        private MeshRenderer[] calibration_camMeshes;
+
         private InputAssets mIputActions;
         private InterestPointManager mInterestPointManager;
 
         private int uiRefCount = 0;
         private int maskCanvasIndex = 0;
         private bool projector_ui_enable_flag = false;
+        private float record_time;
 
         void Start()
         {
@@ -39,11 +44,16 @@ namespace Hsinpa.Main
             mIputActions.UI.Enable();
             mIputActions.UI.Mask_UI.started += OnUIMaskEvent;
             mIputActions.UI.Scene_UI.started += OnUISceneEvent;
+            mIputActions.UI.Calibration_UI.started += OnCalibrationUIEvent;
 
             mIputActions.Plugin_Projector.Enable();
             mIputActions.Plugin_Projector.Enable_Canvas.started += OnUIProjectionEvent;
 
             RegisterInput();
+
+            Type.GeneralTypeStruct.GlobalConfigFileStruct = Type.GeneralTypeStruct.SyncData();
+
+            UpdateExternalConfig(Type.GeneralTypeStruct.GlobalConfigFileStruct);
 
             rootSceneCtrl.LoadDefaultScene();
         }
@@ -90,18 +100,33 @@ namespace Hsinpa.Main
 
             maskCanvasIndex = (maskCanvasIndex + 1) % (maskCanvas.Length + 1);
 
+            foreach (var mask_canvas in maskCanvas) mask_canvas.transform.parent.GetChild(1).GetComponent<GraphicRaycaster>().enabled = maskCanvasIndex != maskCanvas.Length;
 
             if (maskCanvasIndex == maskCanvas.Length) {
                 PlayerInputEnable(true);
                 Debug.Log("maskCanvasIndex " + maskCanvasIndex);
+
 
                 return;
             }
 
             maskCanvas[maskCanvasIndex].gameObject.SetActive(true);
 
+
             if (uiRefCount == 0)
                 PlayerInputEnable(false);
+        }
+
+        private void OnCalibrationUIEvent(InputAction.CallbackContext callbackContext) {
+            if (calibration_camMeshes == null) return;
+
+            foreach (MeshRenderer mesh in calibration_camMeshes) {
+                if (mesh.material == null) continue;
+
+                string calibration_strength = "_CalibrateTexStr";
+                float c_str = mesh.material.GetFloat(calibration_strength);
+                mesh.material.SetFloat(calibration_strength, 1 - c_str);
+            }
         }
 
         private void OnUIProjectionEvent(InputAction.CallbackContext callbackContext)
@@ -133,6 +158,24 @@ namespace Hsinpa.Main
             }
         }
         #endregion
+
+        private void Update() {
+            if (Type.GeneralTypeStruct.GlobalConfigFileStruct.SyncData && Time.time > record_time) {
+                Type.GeneralTypeStruct.GlobalConfigFileStruct = Type.GeneralTypeStruct.SyncData();
+
+                UpdateExternalConfig(Type.GeneralTypeStruct.GlobalConfigFileStruct);
+
+                record_time = Time.time + 1;
+            }
+        }
+
+        private void UpdateExternalConfig(Type.GeneralTypeStruct.ConfigFileStruct generalTypeStruct) {
+            calibration_camMeshes[0].material.SetFloat("_Rotation", generalTypeStruct.Project_1_Cam_Rot);
+            calibration_camMeshes[1].material.SetFloat("_Rotation", generalTypeStruct.Project_2_Cam_Rot);
+
+            if (outerCameraManager != null)
+                outerCameraManager.UpdateCameraConfig(generalTypeStruct);
+        }
 
         private void OnDestroy()
         {

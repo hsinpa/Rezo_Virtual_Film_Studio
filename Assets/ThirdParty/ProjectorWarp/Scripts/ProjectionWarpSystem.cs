@@ -353,7 +353,8 @@ namespace MultiProjectorWarpSystem
             near = 0.1f;
             far = 200;
             projectorCount = 2;
-            fieldOfView = 120;
+            fieldOfView = 150;
+            arrangement = CameraArragement.HORIZONTAL_PERSPECTIVE;
 
             // Near far adjustments only for orthographic cameras
             switch (arrangement)
@@ -438,15 +439,16 @@ namespace MultiProjectorWarpSystem
                         sourceCameras[i].fieldOfView = singleFieldOfViewV;
 
                         sourceCameras[i].transform.localPosition = Vector3.zero;
+                        sourceCameras[i].transform.localEulerAngles = new Vector3(0, 0, 0);
 
-                        if (projectorCount > 1)
-                        {
-                            sourceCameras[i].transform.localEulerAngles = new Vector3(0, startAngle + (index * (compressedArcAngle / (projectorCount - 1))), 0);
-                        }
-                        else
-                        {
-                            sourceCameras[i].transform.localEulerAngles = new Vector3(0, startAngle, 0);
-                        }
+                        //if (projectorCount > 1)
+                        //{
+                        //    sourceCameras[i].transform.localEulerAngles = new Vector3(0, startAngle + (index * (compressedArcAngle / (projectorCount - 1))), 0);
+                        //}
+                        //else
+                        //{
+                        //    sourceCameras[i].transform.localEulerAngles = new Vector3(0, startAngle, 0);
+                        //}
 
 
                     }
@@ -469,14 +471,14 @@ namespace MultiProjectorWarpSystem
                         sourceCameras[i].fieldOfView = singleFieldOfViewV;
 
                         sourceCameras[i].transform.localPosition = Vector3.zero;
-                        if (projectorCount > 1)
-                        {
-                            sourceCameras[i].transform.localEulerAngles = new Vector3(startAngle + (index * (compressedArcAngle / (projectorCount - 1))), 0, 0);
-                        }
-                        else
-                        {
-                            sourceCameras[i].transform.localEulerAngles = new Vector3(startAngle, 0, 0);
-                        }
+                        //if (projectorCount > 1)
+                        //{
+                        //    sourceCameras[i].transform.localEulerAngles = new Vector3(startAngle + (index * (compressedArcAngle / (projectorCount - 1))), 0, 0);
+                        //}
+                        //else
+                        //{
+                        //    sourceCameras[i].transform.localEulerAngles = new Vector3(startAngle, 0, 0);
+                        //}
                     }
                     break;
                 case ProjectionWarpSystem.CameraArragement.HORIZONTAL_PERSPECTIVE_CIRCULAR:
@@ -586,7 +588,7 @@ namespace MultiProjectorWarpSystem
                 sourceCameras.Add(camera);
                 sourceCamera.name = "Source Camera " + (i + 1);
                 sourceCamera.transform.SetParent(sourceCamerasContainer);
-                renderTexture = new RenderTexture((int)renderTextureSize.x, (int)renderTextureSize.y, 24, RenderTextureFormat.ARGB32);
+                renderTexture = new RenderTexture((int)1280, (int)720, 24, RenderTextureFormat.ARGB32);
                 renderTexture.antiAliasing = 8;
                 renderTexture.Create();
                 targetDisplays.Add(i + firstProjector - 1);
@@ -810,13 +812,15 @@ namespace MultiProjectorWarpSystem
 
             }
             var N = JSON.Parse(json);
-            //fieldOfView = N["FieldOfView"].AsFloat;	
+            fieldOfView = N["FieldOfView"].AsFloat;	
             fieldOfView = float.Parse(N["FieldOfView"], CultureInfo.InvariantCulture.NumberFormat);
             projectorCount = N["Cameras"].Count;
-            renderTextureSize = new Vector2(N["TextureWidth"].AsInt, N["TextureHeight"].AsInt);
+            //renderTextureSize = new Vector2(N["TextureWidth"].AsInt, N["TextureHeight"].AsInt);
             xDivisions = N["XDivisions"].AsInt;
             yDivisions = N["YDivisions"].AsInt;
             arrangement = (CameraArragement)N["Arrangement"].AsInt;
+            renderTextureSize = new Vector2(1280, 720);
+
             reverseOrdering = false;
             if(N["ReverseOrdering"]!=null){
                 int ordering = N["ReverseOrdering"].AsInt;
@@ -855,10 +859,10 @@ namespace MultiProjectorWarpSystem
             //far = N["Far"].AsFloat;	
             //projectionCameraSpace = N["Spacing"].AsFloat;	
 
-            near = float.Parse(N["Near"], CultureInfo.InvariantCulture.NumberFormat);	
-            far = float.Parse(N["Far"], CultureInfo.InvariantCulture.NumberFormat);	
-            projectionCameraSpace = float.Parse(N["Spacing"], CultureInfo.InvariantCulture.NumberFormat);	
-
+            //near = float.Parse(N["Near"], CultureInfo.InvariantCulture.NumberFormat);	
+            //far = float.Parse(N["Far"], CultureInfo.InvariantCulture.NumberFormat);	
+            //projectionCameraSpace = float.Parse(N["Spacing"], CultureInfo.InvariantCulture.NumberFormat);
+            projectionCameraSpace = 30;
 
             orthographicSizeScale = 1f;
             if (N["OrthographicSizeScale"] != null){

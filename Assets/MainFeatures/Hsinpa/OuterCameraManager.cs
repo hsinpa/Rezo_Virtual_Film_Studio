@@ -27,7 +27,7 @@ namespace Hsinpa.Character {
 
 
         private float fov_min_range_config = 30;
-        private float fov_max_range_config = 90;
+        private float fov_max_range_config = 150;
 
         private Transform mCameraTransform;
         private Camera[] mCamera;
@@ -65,9 +65,6 @@ namespace Hsinpa.Character {
 
             mPlayerAction.Zoom.performed += OnCameraZoom;
 
-            Type.GeneralTypeStruct.GlobalConfigFileStruct = Type.GeneralTypeStruct.SyncData();
-            UpdateCameraConfig(Type.GeneralTypeStruct.GlobalConfigFileStruct);
-
             is_ready = true;
         }
 
@@ -83,21 +80,10 @@ namespace Hsinpa.Character {
 
         private void Update() {
             PerformMovement();
-            PerformInnerMovement();
-            UpdateExternalConfig();
+            //PerformInnerMovement();
         }
 
-        private void UpdateExternalConfig() {
-            if (Type.GeneralTypeStruct.GlobalConfigFileStruct.SyncData && Time.time > record_time) {
-                Type.GeneralTypeStruct.GlobalConfigFileStruct = Type.GeneralTypeStruct.SyncData();
-
-                UpdateCameraConfig(Type.GeneralTypeStruct.GlobalConfigFileStruct);
-
-                record_time = Time.time + 1;
-            }
-        }
-
-        private void UpdateCameraConfig(Type.GeneralTypeStruct.ConfigFileStruct globalConfigFileStruct) {
+        public void UpdateCameraConfig(Type.GeneralTypeStruct.ConfigFileStruct globalConfigFileStruct) {
             if (mCamera.Length > 0) {
                 mCamera[0].transform.localPosition = new Vector3 (
                     mCameraTransformConfigs[0].position.x + globalConfigFileStruct.Project_1_Pos_X,

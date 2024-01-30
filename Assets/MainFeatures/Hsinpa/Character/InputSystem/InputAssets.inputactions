@@ -379,6 +379,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Calibration_UI",
+                    "type": "Button",
+                    "id": "96a410ec-a2b3-4c8a-801d-8babc514b622",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -401,6 +410,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mask_UI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "633d8db5-4751-40d0-bf53-ffba9e5c8f46",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Calibration_UI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

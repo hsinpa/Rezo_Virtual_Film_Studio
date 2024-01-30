@@ -8,6 +8,8 @@
 Shader "Unlit/Qoobit/Alpha Blend Mask With Tint - Non Linear" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
+		_CalibrateTex("CalibrateTex", 2D) = "white" {}
+
 		_TintColor("Tint", Color) = (1,1,1,1)
 		_TopFadeRange("Top Fade Range", Range(0,1.0)) = 0.0
 		_TopFadeChoke("Top Fade Choke", Range(0,0.999)) = 0.0
@@ -21,6 +23,9 @@ Shader "Unlit/Qoobit/Alpha Blend Mask With Tint - Non Linear" {
 		_RightFadeRange("Right Fade Range", Range(0,1.0)) = 0.0
 		_RightFadeChoke("Right Fade Choke", Range(0,0.999)) = 0.0
 		_RightFadeGamma("Right Fade Gamma", Range(0.0,2.0)) = 1.0
+
+		_CalibrateTexStr("Calibrate Tex Str", Range(0.0,1.0)) = 0.0
+		_Rotation("Rotation", Range(-3.14159,3.14159)) = 0.0
 	}
 
 		SubShader{
@@ -48,10 +53,13 @@ Shader "Unlit/Qoobit/Alpha Blend Mask With Tint - Non Linear" {
 	};
 
 	sampler2D _MainTex;
+	sampler2D _CalibrateTex;
 	sampler2D _AlphaTex;
 	
 	float4 _TintColor;
 	float4 _MainTex_ST;
+	float4 _CalibrateTex_ST;
+
 	float _TopFadeRange;
 	float _TopFadeChoke;
 	float _TopFadeGamma;
@@ -64,18 +72,35 @@ Shader "Unlit/Qoobit/Alpha Blend Mask With Tint - Non Linear" {
 	float _RightFadeRange;
 	float _RightFadeChoke;
 	float _RightFadeGamma;
+	float _CalibrateTexStr;
+	float _Rotation;
+
+	float4x4 rotate2d(float _angle) {
+		return float4x4(cos(_angle), -sin(_angle),0 ,0,
+						sin(_angle), cos(_angle), 0, 0,
+						0, 0, 1, 0,
+						0, 0, 0, 1
+						);
+	}
 
 	v2f vert(appdata_t v)
 	{
 		v2f o;
-		o.vertex = UnityObjectToClipPos(v.vertex);
+		float4x4 rotation_matrix = rotate2d(_Rotation);
+		o.vertex = UnityObjectToClipPos(mul(rotation_matrix, v.vertex));
+
 		o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
+
+
+
 		return o;
 	}
 
 	fixed4 frag(v2f i) : SV_Target
 	{
 		fixed4 col = tex2D(_MainTex, i.texcoord);
+		fixed4 calibrate_tex = tex2D(_CalibrateTex, i.texcoord);
+
 		col *= _TintColor;
 		//top controls
 		float inverseInTopRange = 1-_TopFadeRange;
@@ -115,6 +140,7 @@ Shader "Unlit/Qoobit/Alpha Blend Mask With Tint - Non Linear" {
 		
 		float a = t * b * r * l;
 		
+		col.rgb = lerp(col.rgb, calibrate_tex.rgb, _CalibrateTexStr);
 		
 		return fixed4(col.r, col.g, col.b, a);
 	}

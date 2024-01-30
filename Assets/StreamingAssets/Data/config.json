@@ -5,6 +5,7 @@
 	"Project_1_Rot_X" : 0,
 	"Project_1_Rot_Y" : 0,
 	"Project_1_Rot_Z" : 0,
+	"Project_1_Cam_Rot" : 0,
 
 	"Project_2_Pos_X" : 0,
 	"Project_2_Pos_Y" : 0,
@@ -12,6 +13,7 @@
 	"Project_2_Rot_X" : 0,
 	"Project_2_Rot_Y" : 0,
 	"Project_2_Rot_Z" : 0,
+	"Project_2_Cam_Rot" : 0,
 	"SyncData" : false
 }	
 
