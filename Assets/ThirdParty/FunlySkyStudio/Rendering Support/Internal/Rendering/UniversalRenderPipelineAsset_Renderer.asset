@@ -74,8 +74,8 @@ MonoBehaviour:
   settings:
     UseDeferredRendering: 0
     RenderPassEvent: 450
-    SSGIRangeMin: 10
-    SSGIRangeMax: 25
+    SSGIRangeMin: 5
+    SSGIRangeMax: 10
     ShadowMinDistace: 2.5
     ShadowMaxDistace: 10
     ScanDepth2DRangeFactor: 0.15
