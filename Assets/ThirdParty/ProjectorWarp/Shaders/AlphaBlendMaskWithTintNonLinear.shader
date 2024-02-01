@@ -122,7 +122,7 @@ Shader "Unlit/Qoobit/Alpha Blend Mask With Tint - Non Linear" {
 		//right controls
 		float inverseInRightRange = 1-_RightFadeRange;
 		float inverseInRightChoke = 1-_RightFadeChoke;
-		float rightX = (2.0 * (clamp(rotate_texcoord.x, 0.5, 1.0) - 0.5));
+		float rightX = (1.0 * (clamp(rotate_texcoord.x, 0.0, 1.0) - 0.0));
 		float rightRange = (clamp(rightX,inverseInRightRange,1)-inverseInRightRange) / _RightFadeRange;
 		float rightPercentage = (clamp(rightRange,0,inverseInRightChoke)/inverseInRightChoke);
 		rightPercentage = pow(rightPercentage, (1.0 / _RightFadeGamma));
@@ -131,7 +131,7 @@ Shader "Unlit/Qoobit/Alpha Blend Mask With Tint - Non Linear" {
 		//left controls
 		float inverseInLeftRange = 1-_LeftFadeRange;
 		float inverseInLeftChoke = 1-_LeftFadeChoke;
-		float leftX = 2.0 * (0.5 - clamp(rotate_texcoord.x, 0, 0.50001));
+		float leftX = 1.0 * (1.0 - clamp(rotate_texcoord.x, 0, 1.0));
 		float leftRange = (clamp(leftX,inverseInLeftRange,1)-inverseInLeftRange) / _LeftFadeRange;
 		float leftPercentage = (clamp(leftRange,0,inverseInLeftChoke)/inverseInLeftChoke);
 		leftPercentage = pow(leftPercentage, (1.0 / _LeftFadeGamma));
