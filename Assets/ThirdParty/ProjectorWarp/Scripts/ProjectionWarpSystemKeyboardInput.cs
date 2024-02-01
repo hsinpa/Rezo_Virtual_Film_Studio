@@ -115,44 +115,44 @@ namespace MultiProjectorWarpSystem
                 
             }
             
-            if (Input.GetKeyDown(addRowKey))
-            {
-                system.yDivisions++;
-                for(int i=0;i<system.projectionCameras.Count;i++){
-                    system.projectionCameras[i].yDivisions++;
-                    system.projectionCameras[i].Rebuild();
-                }
-            }
-            if (Input.GetKeyDown(removeRowKey))
-            {
+            //if (Input.GetKeyDown(addRowKey))
+            //{
+            //    system.yDivisions++;
+            //    for(int i=0;i<system.projectionCameras.Count;i++){
+            //        system.projectionCameras[i].yDivisions++;
+            //        system.projectionCameras[i].Rebuild();
+            //    }
+            //}
+            //if (Input.GetKeyDown(removeRowKey))
+            //{
                 
-                if(system.yDivisions>1){
-                    system.yDivisions--;
-                    for(int i=0;i<system.projectionCameras.Count;i++){
-                        system.projectionCameras[i].yDivisions--;
-                        system.projectionCameras[i].Rebuild();
-                    }
-                }
+            //    if(system.yDivisions>1){
+            //        system.yDivisions--;
+            //        for(int i=0;i<system.projectionCameras.Count;i++){
+            //            system.projectionCameras[i].yDivisions--;
+            //            system.projectionCameras[i].Rebuild();
+            //        }
+            //    }
                 
-            }
-            if (Input.GetKeyDown(addColumnKey))
-            {
-                system.xDivisions++;
-                for(int i=0;i<system.projectionCameras.Count;i++){
-                    system.projectionCameras[i].xDivisions++;
-                    system.projectionCameras[i].Rebuild();
-                }
-            }
-            if (Input.GetKeyDown(removeColumnKey))
-            {
-                if(system.xDivisions>1){
-                    system.xDivisions--;
-                    for(int i=0;i<system.projectionCameras.Count;i++){
-                        system.projectionCameras[i].xDivisions--;
-                        system.projectionCameras[i].Rebuild();
-                    }
-                }
-            }
+            //}
+            //if (Input.GetKeyDown(addColumnKey))
+            //{
+            //    system.xDivisions++;
+            //    for(int i=0;i<system.projectionCameras.Count;i++){
+            //        system.projectionCameras[i].xDivisions++;
+            //        system.projectionCameras[i].Rebuild();
+            //    }
+            //}
+            //if (Input.GetKeyDown(removeColumnKey))
+            //{
+            //    if(system.xDivisions>1){
+            //        system.xDivisions--;
+            //        for(int i=0;i<system.projectionCameras.Count;i++){
+            //            system.projectionCameras[i].xDivisions--;
+            //            system.projectionCameras[i].Rebuild();
+            //        }
+            //    }
+            //}
             
             if (Input.GetKeyDown(addRowKey)||Input.GetKeyDown(removeRowKey)||Input.GetKeyDown(addColumnKey)||Input.GetKeyDown(removeColumnKey)){
                 

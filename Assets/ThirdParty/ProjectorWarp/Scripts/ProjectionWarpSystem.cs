@@ -30,8 +30,10 @@ namespace MultiProjectorWarpSystem
         public string defaultCalibrationFile;
         public CameraArragement arrangement;
         public Vector2 renderTextureSize;
-        public int xDivisions = 5;
-        public int yDivisions = 5;
+
+        public int xDivisions = 8;
+        public int yDivisions = 8;
+
         public int firstProjector = 1;
         public int projectorCount;
         public bool regenerateCamera = true;
@@ -628,8 +630,8 @@ namespace MultiProjectorWarpSystem
                 }
                 
                 projectionMesh.projectorIndexText.text = (i + 1).ToString();
-                projectionMesh.xDivisions = xDivisions;
-                projectionMesh.yDivisions = yDivisions;
+                //projectionMesh.xDivisions = xDivisions;
+                //projectionMesh.yDivisions = yDivisions;
                 //projectionMesh.prevXDivision = xDivisions;
                 //projectionMesh.prevYDivision = yDivisions;
                 projectionMesh.width = renderTextureSize.x / 100f;
@@ -816,8 +818,11 @@ namespace MultiProjectorWarpSystem
             fieldOfView = float.Parse(N["FieldOfView"], CultureInfo.InvariantCulture.NumberFormat);
             projectorCount = N["Cameras"].Count;
             //renderTextureSize = new Vector2(N["TextureWidth"].AsInt, N["TextureHeight"].AsInt);
-            xDivisions = N["XDivisions"].AsInt;
-            yDivisions = N["YDivisions"].AsInt;
+            //xDivisions = N["XDivisions"].AsInt;
+            //yDivisions = N["YDivisions"].AsInt;
+            xDivisions = 8;
+            yDivisions = 8;
+
             arrangement = (CameraArragement)N["Arrangement"].AsInt;
             renderTextureSize = new Vector2(1280, 720);
 
@@ -926,12 +931,14 @@ namespace MultiProjectorWarpSystem
                 }
                 
                 JSONNode pointNode = cameraNode["Offset"]["Point"];
-                for (int j = 0; j < (xDivisions + 1)*(yDivisions+1); j++)
-                {
-                    //projectionMesh.pointOffset[j] = new Vector2(pointNode[j * 2].AsFloat, pointNode[(j * 2) + 1].AsFloat);	
-                    projectionMesh.pointOffset[j] = new Vector2(float.Parse(pointNode[j * 2], CultureInfo.InvariantCulture.NumberFormat),	
-                        float.Parse(pointNode[(j * 2) + 1], CultureInfo.InvariantCulture.NumberFormat));
-                }
+                try {
+                    for (int j = 0; j < (xDivisions + 1) * (yDivisions + 1); j++) {
+                        //projectionMesh.pointOffset[j] = new Vector2(pointNode[j * 2].AsFloat, pointNode[(j * 2) + 1].AsFloat);	
+                        projectionMesh.pointOffset[j] = new Vector2(float.Parse(pointNode[j * 2], CultureInfo.InvariantCulture.NumberFormat),
+                            float.Parse(pointNode[(j * 2) + 1], CultureInfo.InvariantCulture.NumberFormat));
+                    }
+                } catch{}
+
                 
 
                 projectionMesh.CreateMesh();

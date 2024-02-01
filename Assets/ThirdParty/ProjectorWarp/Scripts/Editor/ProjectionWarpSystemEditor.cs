@@ -135,13 +135,13 @@ namespace MultiProjectorWarpSystem
             myScript.renderTextureSize = projectorResolution;
             myScript.viewportSize = projectorResolution.y / 200f;
 
-            int xDivisions = EditorGUILayout.IntField("X Divisions", myScript.xDivisions);
-            xDivisions = Mathf.Clamp(xDivisions, 1, 100);
-            myScript.xDivisions = xDivisions;
+            //int xDivisions = EditorGUILayout.IntField("X Divisions", myScript.xDivisions);
+            //xDivisions = Mathf.Clamp(xDivisions, 1, 100);
+            //myScript.xDivisions = xDivisions;
 
-            int yDivisions = EditorGUILayout.IntField("Y Divisions", myScript.yDivisions);
-            yDivisions = Mathf.Clamp(yDivisions, 1, 100);
-            myScript.yDivisions = yDivisions;
+            //int yDivisions = EditorGUILayout.IntField("Y Divisions", myScript.yDivisions);
+            //yDivisions = Mathf.Clamp(yDivisions, 1, 100);
+            //myScript.yDivisions = yDivisions;
 
             int firstProjector;
 
@@ -574,11 +574,11 @@ namespace MultiProjectorWarpSystem
                 }
 
                 //X/Y divisions changed
-                if (prevXDivisions != xDivisions ||
-                    prevYDivisions != yDivisions)
-                {
-                    rebuildCameras = true;
-                }
+                //if (prevXDivisions != xDivisions ||
+                //    prevYDivisions != yDivisions)
+                //{
+                //    rebuildCameras = true;
+                //}
 
                 //Camera count changed
                 if (prevCameraCount != projectorCount)
@@ -621,8 +621,8 @@ namespace MultiProjectorWarpSystem
             }
 
             prevProjectorResolution = projectorResolution;
-            prevXDivisions = xDivisions;
-            prevYDivisions = yDivisions;
+            //prevXDivisions = xDivisions;
+            //prevYDivisions = yDivisions;
             prevCameraCount = projectorCount;
             prevOrthographicSizeScale = orthographicSizeScale;
 
