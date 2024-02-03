@@ -4,8 +4,10 @@ using Hsinpa.Entity;
 using Hsinpa.Static;
 using Hsinpa.UI;
 using Hsinpa.View;
+using MultiProjectorWarpSystem;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -25,6 +27,9 @@ namespace Hsinpa.Main
 
         [SerializeField]
         private MeshRenderer[] calibration_camMeshes;
+
+        [SerializeField]
+        private ProjectionWarpSystem projectionWarpSystem;
 
         private InputAssets mIputActions;
         private InterestPointManager mInterestPointManager;
@@ -72,6 +77,13 @@ namespace Hsinpa.Main
             if (target_point != null) outerCameraManager.Teleport(target_point.position, target_point.rotation);
 
             rootSceneCtrl.ReloadSceneConfig();
+
+            //Load two time, to solve projector bugs
+            projectionWarpSystem.LoadCalibration("projector_calibration.json");
+
+            _ = Hsinpa.Utility.UtilityFunc.DoDelayWork(1, () => {
+                projectionWarpSystem.LoadCalibration("projector_calibration.json");
+            });
         }
 
         private void OnTeleportEvent(InputAction.CallbackContext callbackContext) {

@@ -137,14 +137,14 @@ namespace MultiProjectorWarpSystem
         void Start()
         {
             
-            if (File.Exists(Application.dataPath + "/../default_calibration.json"))	
-            {	
-                LoadCalibration(Application.dataPath + "/../default_calibration.json");	
-            }	
-            else if (defaultCalibrationFile.Length > 0)	
-            {	
-                LoadCalibration(defaultCalibrationFile);	
-            }
+            //if (File.Exists(Application.dataPath + "/../default_calibration.json"))	
+            //{	
+            //    LoadCalibration(Application.dataPath + "/../default_calibration.json");	
+            //}	
+            //else if (defaultCalibrationFile.Length > 0)	
+            //{	
+            //    LoadCalibration(defaultCalibrationFile);	
+            //}
 
             AssignReferences();
             SelectProjector(0, false);
@@ -813,6 +813,10 @@ namespace MultiProjectorWarpSystem
                 return false;
 
             }
+
+            Debug.Log("ProjectWrapSystem File load path : " + path);
+            Debug.Log(json);
+
             var N = JSON.Parse(json);
             fieldOfView = N["FieldOfView"].AsFloat;	
             fieldOfView = float.Parse(N["FieldOfView"], CultureInfo.InvariantCulture.NumberFormat);
@@ -884,6 +888,7 @@ namespace MultiProjectorWarpSystem
             InitCameras();
 
 
+
             for (int i = 0; i < projectorCount; i++)
             {
                 ProjectionMesh projectionMesh = projectionCameras[i];
@@ -922,14 +927,14 @@ namespace MultiProjectorWarpSystem
                     float.Parse(cameraNode["Tint"]["b"], CultureInfo.InvariantCulture.NumberFormat));
 
                 JSONNode cornerNode = cameraNode["Offset"]["Corner"];
-                
+
                 for (int j = 0; j < 4; j++)
                 {
                     //projectionMesh.cornerOffset[j] = new Vector2(cornerNode[j * 2].AsFloat, cornerNode[(j * 2) + 1].AsFloat);	
                     projectionMesh.cornerOffset[j] = new Vector2(float.Parse(cornerNode[j*2], CultureInfo.InvariantCulture.NumberFormat), 	
                         float.Parse(cornerNode[(j * 2)+1], CultureInfo.InvariantCulture.NumberFormat));
                 }
-                
+
                 JSONNode pointNode = cameraNode["Offset"]["Point"];
                 try {
                     for (int j = 0; j < (xDivisions + 1) * (yDivisions + 1); j++) {
@@ -937,14 +942,13 @@ namespace MultiProjectorWarpSystem
                         projectionMesh.pointOffset[j] = new Vector2(float.Parse(pointNode[j * 2], CultureInfo.InvariantCulture.NumberFormat),
                             float.Parse(pointNode[(j * 2) + 1], CultureInfo.InvariantCulture.NumberFormat));
                     }
-                } catch{}
+                } catch{
+                }
 
                 
 
                 projectionMesh.CreateMesh();
                 projectionMesh.BlendRefresh();
-                //projectionMesh.OffsetRefresh();
-                projectionMesh.UpdateUI();
             }
             
             defaultCalibrationFile = path;
