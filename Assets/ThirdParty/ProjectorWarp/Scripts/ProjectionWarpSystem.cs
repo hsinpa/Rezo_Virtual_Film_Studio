@@ -355,7 +355,7 @@ namespace MultiProjectorWarpSystem
             near = 0.1f;
             far = 200;
             projectorCount = 2;
-            fieldOfView = 150;
+            fieldOfView = 200;
             arrangement = CameraArragement.HORIZONTAL_PERSPECTIVE;
 
             // Near far adjustments only for orthographic cameras
