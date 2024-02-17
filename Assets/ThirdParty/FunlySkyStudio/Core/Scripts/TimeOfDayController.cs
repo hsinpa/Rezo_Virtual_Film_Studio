@@ -474,7 +474,7 @@ namespace Funly.SkyStudio
         // Synchronize with Unity's global fog color so the rest of the scene uses this color fog.
         if (skyProfile.GetBoolPropertyValue(ProfilePropertyKeys.FogSyncWithGlobal, timeOfDay))
         {
-          RenderSettings.fogColor = fogColor;
+          //RenderSettings.fogColor = fogColor;
         }
       }
 

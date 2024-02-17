@@ -67,6 +67,15 @@
                     "processors": "ScaleVector2(x=2,y=2)",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "VerticalTransform",
+                    "type": "Value",
+                    "id": "b6912965-588e-4e74-bac9-99315a2e4fee",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -355,6 +364,39 @@
                     "action": "Look Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "7e316066-4652-4fcd-92f9-1ec1a5a07d94",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalTransform",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "1214ba94-3d59-4fdc-a10f-ca6b6532fe4b",
+                    "path": "<Keyboard>/pageDown",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalTransform",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a372fa72-e22a-4b64-90e6-6530b5c114d0",
+                    "path": "<Keyboard>/pageUp",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalTransform",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

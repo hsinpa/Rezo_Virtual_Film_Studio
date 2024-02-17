@@ -89,6 +89,15 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
                     ""processors"": ""ScaleVector2(x=2,y=2)"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""VerticalTransform"",
+                    ""type"": ""Value"",
+                    ""id"": ""b6912965-588e-4e74-bac9-99315a2e4fee"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -377,6 +386,39 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
                     ""action"": ""Look Trigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""7e316066-4652-4fcd-92f9-1ec1a5a07d94"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalTransform"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""1214ba94-3d59-4fdc-a10f-ca6b6532fe4b"",
+                    ""path"": ""<Keyboard>/pageDown"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalTransform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a372fa72-e22a-4b64-90e6-6530b5c114d0"",
+                    ""path"": ""<Keyboard>/pageUp"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalTransform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -536,6 +578,7 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Teleport = m_Player.FindAction("Teleport", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_VerticalTransform = m_Player.FindAction("VerticalTransform", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Scene_UI = m_UI.FindAction("Scene_UI", throwIfNotFound: true);
@@ -612,6 +655,7 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Teleport;
     private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_VerticalTransform;
     public struct PlayerActions
     {
         private @InputAssets m_Wrapper;
@@ -623,6 +667,7 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Teleport => m_Wrapper.m_Player_Teleport;
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        public InputAction @VerticalTransform => m_Wrapper.m_Player_VerticalTransform;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -653,6 +698,9 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @VerticalTransform.started += instance.OnVerticalTransform;
+            @VerticalTransform.performed += instance.OnVerticalTransform;
+            @VerticalTransform.canceled += instance.OnVerticalTransform;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -678,6 +726,9 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @VerticalTransform.started -= instance.OnVerticalTransform;
+            @VerticalTransform.performed -= instance.OnVerticalTransform;
+            @VerticalTransform.canceled -= instance.OnVerticalTransform;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -848,6 +899,7 @@ public partial class @InputAssets: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnTeleport(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+        void OnVerticalTransform(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

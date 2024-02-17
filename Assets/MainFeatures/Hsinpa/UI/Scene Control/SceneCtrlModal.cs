@@ -17,6 +17,7 @@ using UnityEngine.EventSystems;
 using Funly.SkyStudio;
 using Hsinpa.Event;
 using Hsinpa.GameScene;
+using System;
 
 namespace Hsinpa.UI
 {
@@ -91,7 +92,7 @@ namespace Hsinpa.UI
         {
             base.Show(isShow);
 
-            if (isShow) Setup();
+            Setup();
         }
 
         public void Setup() {
@@ -137,6 +138,18 @@ namespace Hsinpa.UI
             float intensity = (Mathf.Lerp(StaticFlag.Config.FOG_INTENSITY_MIN, StaticFlag.Config.FOG_INTENSITY_MAX, fog_intensity_normalize));
             RenderSettings.fogDensity = intensity;
 
+            //Fog color
+            float color_r = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_RTogglePref, 1);
+            float color_g = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_GTogglePref, 1);
+            float color_b = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_BTogglePref, 1);
+            Color fogColor = new Color(color_r, color_g, color_b);
+            Debug.Log(fogColor);
+            RenderSettings.fogColor = fogColor;
+
+            //colorAdjust.colorFilter.value = new Color(color_r, color_g, color_b);
+            //color_adjustment.targetGraphic.color = colorAdjust.colorFilter.value;
+            FColorPicker.SetColor(fogColor);
+
             // Post processing Contrast & Saturate
             _volume = GameObject.FindFirstObjectByType<Volume>();
             if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
@@ -149,16 +162,6 @@ namespace Hsinpa.UI
                 float saturateValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.SaturateTogglePref, 0.5f);
                 saturate_slider.SetValueWithoutNotify(saturateValue);
                 colorAdjust.saturation.value = RescaleVariable(saturateValue, scale: 100);
-
-                //Color filter
-                float color_r = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_RTogglePref, 1);
-                float color_g = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_GTogglePref, 1);
-                float color_b = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_BTogglePref, 1);
-
-                colorAdjust.colorFilter.value = new Color(color_r, color_g, color_b);
-                color_adjustment.targetGraphic.color = colorAdjust.colorFilter.value;
-
-                FColorPicker.SetColor(colorAdjust.colorFilter.value);
             }
 
             // Day Night Toggle
@@ -247,10 +250,11 @@ namespace Hsinpa.UI
             PlayerPrefs.SetFloat(StaticFlag.PlayerPref.Color_GTogglePref, color.g);
             PlayerPrefs.SetFloat(StaticFlag.PlayerPref.Color_BTogglePref, color.b);
 
-            if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
-                colorAdjust.colorFilter.value = color;
-                color_adjustment.targetGraphic.color = color;
-            }
+            //if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
+            //    colorAdjust.colorFilter.value = color;
+            //    color_adjustment.targetGraphic.color = color;
+            //}
+            RenderSettings.fogColor = color;
 
             PlayerPrefs.Save();
         }

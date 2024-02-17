@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -199,6 +200,7 @@ public class FlexibleColorPicker : MonoBehaviour {
     /// Modifies starting color if FCP is not initialized.
     /// </summary>
     public void SetColor(Color color) {
+        startingColor = color;
         this.color = color;
     }
 

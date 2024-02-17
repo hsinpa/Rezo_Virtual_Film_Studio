@@ -39,6 +39,7 @@ namespace Hsinpa.Character {
         float currentRotationY = 0;
 
         Vector2 movementVector;
+        Vector3 vertical_axis = new Vector3();
 
         private bool is_ready;
         private float record_time;
@@ -62,6 +63,9 @@ namespace Hsinpa.Character {
             mPlayerAction.Look.performed += OnPlayerLook;
             mPlayerAction.LookTrigger.performed += OnLookTrigger;
             mPlayerAction.LookTrigger.canceled += OnLookCancel;
+
+            mPlayerAction.VerticalTransform.performed += OnVerticalTransform;
+            mPlayerAction.VerticalTransform.canceled += OnVerticalTransform;
 
             mPlayerAction.Zoom.performed += OnCameraZoom;
 
@@ -116,11 +120,10 @@ namespace Hsinpa.Character {
         private void PerformMovement() { 
             if (!is_ready) return;
 
-            if (movementVector.magnitude < 0.01f) return;
-
             Vector3 position = mCameraTransform.position;
             position += ((innerCameraTransform.forward * movementVector.y) + (innerCameraTransform.right * movementVector.x)) * translation_sensitivity * Time.deltaTime;
-            mCameraTransform.position = position;
+
+            mCameraTransform.position = position + (vertical_axis * translation_sensitivity * Time.deltaTime);
             outer_cache_position = mCameraTransform.position;
         }
 
@@ -174,6 +177,11 @@ namespace Hsinpa.Character {
 
         private void OnLookCancel(InputAction.CallbackContext callbackContext) {
             can_manual_look_flag = false;
+        }
+
+        private void OnVerticalTransform(InputAction.CallbackContext callbackContext) {
+            var vertical_value = callbackContext.ReadValue<float>();
+            vertical_axis.Set(0, vertical_value, 0);
         }
 
         #endregion

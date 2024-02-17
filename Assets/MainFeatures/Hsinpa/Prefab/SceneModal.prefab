@@ -511,9 +511,9 @@ RectTransform:
   m_Children:
   - {fileID: 7440943084634740553}
   - {fileID: 8053465724618214252}
+  - {fileID: 2868075014679780497}
   - {fileID: 1274656782917026179}
   - {fileID: 2003340413978659077}
-  - {fileID: 2868075014679780497}
   m_Father: {fileID: 1557428801237965762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Color Balance
+  m_text: Fog Color
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -830,7 +830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2868075014679780497}
   m_Layer: 5
-  m_Name: Color Balance
+  m_Name: fog color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
