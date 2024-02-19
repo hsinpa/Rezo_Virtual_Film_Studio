@@ -105,7 +105,7 @@ Material:
     - _CloudCubemapNormalHeight: 0
     - _CloudCubemapNormalRotationSpeed: 0.01
     - _CloudCubemapRotationSpeed: 0.01
-    - _CloudDensity: 0.598
+    - _CloudDensity: 0.4536549
     - _CloudDirection: 1
     - _CloudFadeAmount: 1
     - _CloudFadePosition: 0.97
@@ -177,7 +177,7 @@ Material:
     - _CloudCubemapTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradientSkyLowerColor: {r: 0.9389414, g: 0.9389414, b: 0.9389414, a: 1}
     - _GradientSkyMiddleColor: {r: 0.44688877, g: 0.7360862, b: 0.8795463, a: 1}
-    - _GradientSkyUpperColor: {r: 0.1941528, g: 0.45751187, b: 0.8026862, a: 1}
+    - _GradientSkyUpperColor: {r: 0.33812988, g: 0.5998731, b: 0.7961592, a: 1}
     - _HorizonFogColor: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
     - _MoonColor: {r: 0.39705884, g: 0.39705884, b: 0.39705884, a: 1}
     - _MoonPosition: {r: 0.043717455, g: -0.9979094, b: -0.04759801, a: 0}

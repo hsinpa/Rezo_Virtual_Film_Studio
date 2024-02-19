@@ -85,12 +85,12 @@ MonoBehaviour:
           m_Time: 0.33385336
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.19290671, g: 0.4566631, b: 0.8018868, a: 1}
+          color: {r: 0.28034887, g: 0.5716817, b: 0.7924528, a: 1}
         - m_Id: 23e155cb-4182-460d-b9e9-5f90248da904
           m_Time: 0.6294852
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.19607843, g: 0.45882353, b: 0.8039216, a: 1}
+          color: {r: 0.4274208, g: 0.64343834, b: 0.8018868, a: 1}
         - m_Id: 8d3af4ea-f723-4840-8ba8-dce496fc8119
           m_Time: 0.6767372
           m_InterpolationCurve: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
           m_Time: 0.7719298
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 1, g: 0.8693712, b: 0.58823526, a: 1}
+          color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
         - m_Id: d446ead3-0cec-431c-a677-0966f7a9009e
           m_Time: 0.8245614
           m_InterpolationCurve: 0
@@ -670,10 +670,10 @@ MonoBehaviour:
           m_InterpolationDirection: 0
           value: 0.598
         - m_Id: 3f4b7b11-f635-4f64-99b2-6ab4e4815203
-          m_Time: 0.72274435
+          m_Time: 0.7227444
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.598
+          value: 0.30911052
         - m_Id: b5fcc2e5-18c4-4388-997a-13942388da31
           m_Time: 0.88251877
           m_InterpolationCurve: 0
