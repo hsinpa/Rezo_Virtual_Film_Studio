@@ -26,8 +26,8 @@ namespace Hsinpa.Character {
         private VivePoseTracker vivePoseTracker;
 
 
-        private float fov_min_range_config = 30;
-        private float fov_max_range_config = 150;
+        private float fov_min_range_config = 60;
+        private float fov_max_range_config = 200;
 
         private Transform mCameraTransform;
         private Camera[] mCamera;
@@ -122,8 +122,11 @@ namespace Hsinpa.Character {
 
             Vector3 position = mCameraTransform.position;
             position += ((innerCameraTransform.forward * movementVector.y) + (innerCameraTransform.right * movementVector.x)) * translation_sensitivity * Time.deltaTime;
+            position.y = mCameraTransform.position.y;
 
-            mCameraTransform.position = position + (vertical_axis * translation_sensitivity * Time.deltaTime);
+            Vector3 final_position = position + (vertical_axis * translation_sensitivity * Time.deltaTime);
+
+            mCameraTransform.position = final_position;
             outer_cache_position = mCameraTransform.position;
         }
 
