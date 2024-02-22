@@ -388,6 +388,13 @@ namespace MultiProjectorWarpSystem
                 myScript.calibrationManager.leftGammaInputField.text = leftFadeGamma.ToString();
                 myScript.calibrationManager.leftGammaSlider.value = leftFadeGamma;
 
+                float rotation = EditorGUILayout.FloatField("Rotation", myScript.projectionCameras[myScript.selectedMesh].rotationRange);
+                rotation = Mathf.Clamp(rotation, -1f, 1f);
+                myScript.projectionCameras[myScript.selectedMesh].rotationRange = rotation;
+
+                myScript.calibrationManager.rotationInputField.text = rotation.ToString();
+                myScript.calibrationManager.rotationSlider.value = rotation;
+
                 #endregion
 
                 #region RIGHT FADE

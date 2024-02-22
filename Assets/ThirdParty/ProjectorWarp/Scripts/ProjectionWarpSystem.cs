@@ -277,6 +277,9 @@ namespace MultiProjectorWarpSystem
             calibrationManager.rightGammaSlider.value = mesh.rightFadeGamma;
             calibrationManager.rightGammaInputField.text = mesh.rightFadeGamma.ToString();
 
+            calibrationManager.rotationSlider.value = mesh.rotationRange;
+            calibrationManager.rotationInputField.text = mesh.rotationRange.ToString();
+
             calibrationManager.redSlider.value = mesh.tint.r * 255;
             calibrationManager.greenSlider.value = mesh.tint.g * 255;
             calibrationManager.blueSlider.value = mesh.tint.b * 255;
@@ -726,7 +729,8 @@ namespace MultiProjectorWarpSystem
                 json += "\"RightFadeRange\":" + projectionMesh.rightFadeRange.ToString(iItemFormat, CultureInfo.InvariantCulture) + ",";
                 json += "\"RightFadeChoke\":" + projectionMesh.rightFadeChoke.ToString(iItemFormat, CultureInfo.InvariantCulture) + ",";
                 json += "\"RightFadeGamma\":" + projectionMesh.rightFadeGamma.ToString(iItemFormat, CultureInfo.InvariantCulture) + ",";
-                
+                json += "\"Rotation\":" + projectionMesh.rotationRange.ToString(iItemFormat, CultureInfo.InvariantCulture) + ",";
+
                 json += "\"Tint\":" + "{ \"r\":" + projectionMesh.tint.r.ToString(iItemFormat, CultureInfo.InvariantCulture) + 
                     ",\"g\":" + projectionMesh.tint.g.ToString(iItemFormat, CultureInfo.InvariantCulture) + 
                     ",\"b\":" + projectionMesh.tint.b.ToString(iItemFormat, CultureInfo.InvariantCulture) + "},";
@@ -921,7 +925,12 @@ namespace MultiProjectorWarpSystem
                 projectionMesh.rightFadeRange = float.Parse(cameraNode["RightFadeRange"], CultureInfo.InvariantCulture.NumberFormat);		
                 projectionMesh.rightFadeChoke = float.Parse(cameraNode["RightFadeChoke"], CultureInfo.InvariantCulture.NumberFormat);		
                 if(cameraNode["RightFadeGamma"]!=null) projectionMesh.rightFadeGamma = float.Parse(cameraNode["RightFadeGamma"], CultureInfo.InvariantCulture.NumberFormat);
-                	
+
+                if (float.TryParse(cameraNode["Rotation"], out var parse_rotation)) {
+                    projectionMesh.rotationRange = parse_rotation;
+                }
+
+
                 projectionMesh.tint = new Color(float.Parse(cameraNode["Tint"]["r"], CultureInfo.InvariantCulture.NumberFormat),	
                     float.Parse(cameraNode["Tint"]["g"], CultureInfo.InvariantCulture.NumberFormat),	
                     float.Parse(cameraNode["Tint"]["b"], CultureInfo.InvariantCulture.NumberFormat));

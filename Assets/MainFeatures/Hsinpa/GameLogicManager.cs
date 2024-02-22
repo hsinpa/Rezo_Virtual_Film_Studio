@@ -182,8 +182,8 @@ namespace Hsinpa.Main
         }
 
         private void UpdateExternalConfig(Type.GeneralTypeStruct.ConfigFileStruct generalTypeStruct) {
-            calibration_camMeshes[0].material.SetFloat("_Rotation", generalTypeStruct.Project_1_Cam_Rot);
-            calibration_camMeshes[1].material.SetFloat("_Rotation", generalTypeStruct.Project_2_Cam_Rot);
+            //calibration_camMeshes[0].material.SetFloat("_Rotation", generalTypeStruct.Project_1_Cam_Rot);
+            //calibration_camMeshes[1].material.SetFloat("_Rotation", generalTypeStruct.Project_2_Cam_Rot);
 
             if (outerCameraManager != null)
                 outerCameraManager.UpdateCameraConfig(generalTypeStruct);

@@ -74,10 +74,12 @@ namespace MultiProjectorWarpSystem
         public float leftFadeRange;
         public float leftFadeChoke;
         public float leftFadeGamma;
+
         public float rightFadeRange;
         public float rightFadeChoke;
         public float rightFadeGamma;
 
+        public float rotationRange;
 
         [Header("Color Correction")]
         public Color tint;
@@ -129,6 +131,7 @@ namespace MultiProjectorWarpSystem
                 rightFadeRange = fadeMaterial.GetFloat("_RightFadeRange");
                 rightFadeChoke = fadeMaterial.GetFloat("_RightFadeChoke");
                 rightFadeGamma = fadeMaterial.GetFloat("_RightFadeGamma");
+                rotationRange = fadeMaterial.GetFloat("_Rotation");
             }
 
             //CreateMesh();
@@ -182,6 +185,8 @@ namespace MultiProjectorWarpSystem
                 fadeMaterial.SetFloat("_RightFadeRange", rightFadeRange);
                 fadeMaterial.SetFloat("_RightFadeChoke", rightFadeChoke);
                 fadeMaterial.SetFloat("_RightFadeGamma", rightFadeGamma);
+
+                fadeMaterial.SetFloat("_Rotation", rotationRange);
 
                 fadeMaterial.SetColor("_TintColor", tint);
             }

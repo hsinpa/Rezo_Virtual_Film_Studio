@@ -65,12 +65,15 @@ namespace MultiProjectorWarpSystem
         public InputField bottomRangeInputField;
         public InputField bottomChokeInputField;
         public InputField bottomGammaInputField;
+
         public InputField leftRangeInputField;
         public InputField leftChokeInputField;
         public InputField leftGammaInputField;
+
         public InputField rightRangeInputField;
         public InputField rightChokeInputField;
         public InputField rightGammaInputField;
+        public InputField rotationInputField;
 
         public Slider topRangeSlider;
         public Slider topChokeSlider;
@@ -81,9 +84,11 @@ namespace MultiProjectorWarpSystem
         public Slider leftRangeSlider;
         public Slider leftChokeSlider;
         public Slider leftGammaSlider;
+
         public Slider rightRangeSlider;
         public Slider rightChokeSlider;
         public Slider rightGammaSlider;
+        public Slider rotationSlider;
 
         [Header("White Balance UI")]
         public InputField redInputField;
@@ -184,6 +189,12 @@ namespace MultiProjectorWarpSystem
             system.GetCurrentProjectionCamera().UpdateBlend();
         }
 
+        public void OnRotationSliderChanged(float value) {
+            system.GetCurrentProjectionCamera().rotationRange = value;
+            rotationInputField.text = value.ToString();
+            system.GetCurrentProjectionCamera().UpdateBlend();
+        }
+
         public void OnTopRangeInputChanged(string value)
         {
             float.TryParse(value, out system.GetCurrentProjectionCamera().topFadeRange);
@@ -257,6 +268,11 @@ namespace MultiProjectorWarpSystem
             system.GetCurrentProjectionCamera().UpdateBlend();
         }
 
+        public void OnRotationInputChanged(string value) {
+            float.TryParse(value, out system.GetCurrentProjectionCamera().rotationRange);
+            rotationSlider.value = system.GetCurrentProjectionCamera().rotationRange;
+            system.GetCurrentProjectionCamera().UpdateBlend();
+        }
 
 
         #endregion
