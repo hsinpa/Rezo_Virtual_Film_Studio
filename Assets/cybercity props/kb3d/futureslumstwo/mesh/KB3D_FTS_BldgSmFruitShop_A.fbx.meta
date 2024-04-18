@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 81b1e80819418bb40b9f04b7103b73be
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_AtlasFruitsA
+    second: {fileID: 2100000, guid: f30bdc6564b87df4090f02194513c675, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_AtlasGraphics
+    second: {fileID: 2100000, guid: 3d82128b6be942f4288157e7e9adc2d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_AtlasPropsDecals
+    second: {fileID: 2100000, guid: 69f24849131a7894c94a5afc0796d35c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_BrickWorkDirty
+    second: {fileID: 2100000, guid: 3b9f4148bac48534c8264e0bca3cdd29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_CablesPipesA
+    second: {fileID: 2100000, guid: 47a70f8159b08cd4ca698d245b4d5cfc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_Cardboard
+    second: {fileID: 2100000, guid: b129c15979f9fa949aec27062d1c70b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcreteBaseD
+    second: {fileID: 2100000, guid: dc4052936537dad459759aacbdbfe7bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcreteBaseDLeaked
+    second: {fileID: 2100000, guid: e04d13ea4d3983447ae5f2125916b503, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcreteBlocksHorizLeaked
+    second: {fileID: 2100000, guid: b9c71a3740b93504aa97e6f5db34215e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcreteBroken
+    second: {fileID: 2100000, guid: 0697494057624c44da40bcf5d5ec9655, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcretePPeeledA
+    second: {fileID: 2100000, guid: 5855447b0b7dcab41984494fca26e1e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcretePainWhiteOLine
+    second: {fileID: 2100000, guid: 236b623db455edf4e933fd88e4fba37f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcretePanelFloorTrimB
+    second: {fileID: 2100000, guid: a1654b14fd79181489572715bc2aba2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcretePlaster
+    second: {fileID: 2100000, guid: d7c7b8f66faf1874c810a227d46568b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcreteTrim
+    second: {fileID: 2100000, guid: ae697a2784719a84d9277a3209e262b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcreteWornPaintA
+    second: {fileID: 2100000, guid: a637b8d553d8cb545b7b79ba6073389f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_ConcreteWornPaintB
+    second: {fileID: 2100000, guid: 285be783f5058274eb573926cbe0fbca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_GlassDirty
+    second: {fileID: 2100000, guid: 5e44d2cbfc3d2e14d99d0d6e2f202d01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_Graffiti
+    second: {fileID: 2100000, guid: 6b35d4c742016694fba11236c3fa864a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_LightsC
+    second: {fileID: 2100000, guid: 8dc8ec0bd341b7d44bfb8f8be4f05c0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalBeams
+    second: {fileID: 2100000, guid: 5a4fb01c8e1fe2448ad4cec9af1001f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalBeamsB
+    second: {fileID: 2100000, guid: 3162d35b2899c504e832eb212bffbfd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalBlindsTrimA
+    second: {fileID: 2100000, guid: a51c772e4f1a93b4d9d6098e3f90a4f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalBlindsTrimB
+    second: {fileID: 2100000, guid: 29f52a7d967e7364c8ea64f3e2631ff6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalDirtBlue
+    second: {fileID: 2100000, guid: d9af7d15e5857d44d8e1fbe1c78f9231, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalDirtRustyDark
+    second: {fileID: 2100000, guid: ca287e21da7654f43a005dc198872871, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalFloorElementsTrim
+    second: {fileID: 2100000, guid: 0ace372a1726164489d79e8708e148c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalPaintGreenWorn
+    second: {fileID: 2100000, guid: 89387a618c4a4bb47843336a466e5984, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalPaintRedC
+    second: {fileID: 2100000, guid: 74c4c54d186e4b145a61a4544b297569, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalPanelsTrimA
+    second: {fileID: 2100000, guid: 407673e0972da7b47aa9c356fe8cc2d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalPipesTrimA
+    second: {fileID: 2100000, guid: 9efd0923f8c4a9642bdfe590fb945dc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_MetalSteelRoughPattern
+    second: {fileID: 2100000, guid: 2bb4875c25845fa4ab01e6719fbadf10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PlasticBWtrim
+    second: {fileID: 2100000, guid: dece05fe00bc05149a49274e0687c446, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PlasticBlueE
+    second: {fileID: 2100000, guid: dcc3c50255015374ea4103d9fcd012bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PlasticGreenDirty
+    second: {fileID: 2100000, guid: a1ed913721b510d4a8de5bde879b5a51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PlasticTarpA
+    second: {fileID: 2100000, guid: 29bbd116c2f82d64688f35f984f11e54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PlasticTarpB
+    second: {fileID: 2100000, guid: f7caff9df3eb87647bc0cbe2713b81fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PlasticTarpC
+    second: {fileID: 2100000, guid: 7499861bdefde934dabd05945be64507, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PolycarbonateGWB
+    second: {fileID: 2100000, guid: dfa844eb86d633e40b97a537de61e98b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_PropAtlasTrim01
+    second: {fileID: 2100000, guid: 74a061bba4cd8524ea4a9c917616a3a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_RubberTrim
+    second: {fileID: 2100000, guid: 3105c442119267c47bf0ef0a4f6ed93f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_SteelOld
+    second: {fileID: 2100000, guid: 868859793b5300c4297cd60879ffd651, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_SteelPanelDarkDirtB
+    second: {fileID: 2100000, guid: 2c21628e00889654bb692719a868cb5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_SteelWornA
+    second: {fileID: 2100000, guid: 96ba5193b4c1f4c418a1e7c6bccbf44e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_SteelWornB
+    second: {fileID: 2100000, guid: 9530018f25062d542bf83f3475b162a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_SteelWornRusty
+    second: {fileID: 2100000, guid: 99c49b2b12e00494aa194f3a74dfd783, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_StreetTilesC
+    second: {fileID: 2100000, guid: f7b0416f79a428142bdfa9645986c17e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_Trash
+    second: {fileID: 2100000, guid: 83ebd0f3b79b79e4daa0f744c336cedd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_TrashBagsTrimD
+    second: {fileID: 2100000, guid: 8419ceb05664853478ecf9fb613e34cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_TrashCM
+    second: {fileID: 2100000, guid: e0125ce5d83c5794ea85a70f23c3dac7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_WaterDirt
+    second: {fileID: 2100000, guid: 1855f517e71895e40a6bb4c47e57833a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KB3D_FTS_WoodOldD
+    second: {fileID: 2100000, guid: 863e061033c903f49a101920577648df, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
