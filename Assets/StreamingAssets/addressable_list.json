@@ -1,6 +1,9 @@
 {
 	"scene": [
-		"scene@ad_forest_scene"
+		"scene@ad_forest_scene",
+		"scene@school_corridor_scene",
+		"scene@japanese_common_pool_scene",
+		"scene@cyber_iron_city_scene",
+		"scene@cyber_scifi_scene"
 	]
-
 }
