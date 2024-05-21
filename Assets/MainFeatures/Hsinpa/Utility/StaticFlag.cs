@@ -8,7 +8,7 @@ namespace Hsinpa.Static
     {
         public class Config {
             public const float FOG_INTENSITY_MAX = 0.3f;
-            public const float FOG_INTENSITY_MIN = 0.003f;
+            public const float FOG_INTENSITY_MIN = 0.0f;
         }
 
         public class Input
@@ -30,6 +30,8 @@ namespace Hsinpa.Static
         public class PlayerPref {
             public const string DayNightTogglePref = "pref@day_night_toggle";
             public const string FogIntensityPref = "pref@fog_intensity";
+            public const string LoadScenePref = "pref@load_scene";
+
 
             public const string ContrastTogglePref = "pref@contrast_toggle";
             public const string SaturateTogglePref = "pref@saturate_toggle";

@@ -1,3 +1,4 @@
+using Hsinpa.Static;
 using Hsinpa.UI;
 using Hsinpa.View;
 using System.Collections;
@@ -11,8 +12,6 @@ namespace Hsinpa.Ctrl
     public class RootSceneCtrl : MonoBehaviour
     {
         private Modals _modals;
-
-        public System.Action SceneActiveEvent;
 
         void Awake() {
             _modals = Modals.instance;
@@ -30,9 +29,13 @@ namespace Hsinpa.Ctrl
             sceneCtrlModal.Setup();
 
             if (sceneCtrlModal.Scene_List != null && sceneCtrlModal.Scene_List.Count > 0) {
-               await sceneCtrlModal.LoadScene(sceneCtrlModal.Scene_List[0]);
 
-                if (SceneActiveEvent != null) SceneActiveEvent();
+                string previous_scene = PlayerPrefs.GetString(StaticFlag.PlayerPref.LoadScenePref, "");
+
+                if (previous_scene == "")
+                    previous_scene = sceneCtrlModal.Scene_List[0];
+
+                await sceneCtrlModal.LoadScene(previous_scene);
             }
         }
     }

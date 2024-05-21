@@ -49,6 +49,13 @@ namespace Hsinpa.UI
         [SerializeField]
         private FlexibleColorPicker FColorPicker;
 
+        [Header("Loading")]
+        [SerializeField]
+        private TextMeshProUGUI loading_text;
+
+        [SerializeField]
+        private RectTransform loading_background;
+
         [Header("Bottom")]
         [SerializeField]
         private Button loadBtn;
@@ -64,6 +71,7 @@ namespace Hsinpa.UI
         private Volume _volume;
         private TimeOfDayController _timeOfDayController;
         private LightSwitchListener[] _lightSwitchListeners;
+        private bool _load_scene_flag = false;
 
         private float night_value = 0.8f, day_value = 0.45f;
 
@@ -95,6 +103,16 @@ namespace Hsinpa.UI
             Setup();
         }
 
+        private void Update()
+        {
+            loading_background.gameObject.SetActive(_load_scene_flag);
+
+            if (_load_scene_flag && addressableSceneManagement != null)
+            {
+                loading_text.text = "Loading progress: " + System.Math.Round(addressableSceneManagement.GetCompletePercentage(), 2);
+            }
+        }
+
         public void Setup() {
             SetSceneListUI();
             SetOtherConfiguration();
@@ -106,14 +124,17 @@ namespace Hsinpa.UI
             scene_selectors.Clear();
 
             var scene_array = sceneListJson["scene"].AsArray;
+            int i = 1;
 
             foreach (var scene_j in scene_array) {
                 string add_key = scene_j.ToString().Replace("\"", "");
 
+                string display_name = add_key.Replace("scene@", "");
+
                 var ui_text = UtilityFunc.CreateObjectToParent<TextMeshProUGUI>(scene_selector_container, scene_selector_prefab.gameObject);
+                    ui_text.text = $"{i}. {display_name}";
                 var ui_button = ui_text.GetComponent<Button>();
 
-                Debug.Log("add_key " + add_key);
                 ui_text.color = (add_key == cache_key) ? Color.magenta : Color.white;
 
                 scene_selectors.Add(ui_text);
@@ -128,6 +149,8 @@ namespace Hsinpa.UI
 
                     cache_key = add_key;
                 });
+
+                i++;
             }
         }
 
@@ -143,16 +166,20 @@ namespace Hsinpa.UI
             float color_g = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_GTogglePref, 1);
             float color_b = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.Color_BTogglePref, 1);
             Color fogColor = new Color(color_r, color_g, color_b);
-            Debug.Log(fogColor);
             RenderSettings.fogColor = fogColor;
 
             //colorAdjust.colorFilter.value = new Color(color_r, color_g, color_b);
             //color_adjustment.targetGraphic.color = colorAdjust.colorFilter.value;
             FColorPicker.SetColor(fogColor);
+            FColorPicker.ChangeMode(FlexibleColorPicker.MainPickingMode.HS);
 
             // Post processing Contrast & Saturate
             _volume = GameObject.FindFirstObjectByType<Volume>();
             if (_volume != null && _volume.profile.TryGet(out ColorAdjustments colorAdjust)) {
+
+                contrast_slider.interactable = true;
+                saturate_slider.interactable = true;
+
                 //Contrast
                 float contrastValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.ContrastTogglePref, 0.5f);
                 contrast_slider.SetValueWithoutNotify(contrastValue);
@@ -162,17 +189,27 @@ namespace Hsinpa.UI
                 float saturateValue = PlayerPrefs.GetFloat(StaticFlag.PlayerPref.SaturateTogglePref, 0.5f);
                 saturate_slider.SetValueWithoutNotify(saturateValue);
                 colorAdjust.saturation.value = RescaleVariable(saturateValue, scale: 100);
+            } else
+            {
+                contrast_slider.interactable = false;
+                saturate_slider.interactable = false;
             }
 
             // Day Night Toggle
             _timeOfDayController = GameObject.FindFirstObjectByType<TimeOfDayController>();
             _lightSwitchListeners = GameObject.FindObjectsOfType<LightSwitchListener>(includeInactive: true);
             if (_timeOfDayController != null) {
-                 int day_night_switch = PlayerPrefs.GetInt(StaticFlag.PlayerPref.DayNightTogglePref, 1);
+                if (!day_night_toggle.gameObject.activeInHierarchy)
+                    day_night_toggle.gameObject.SetActive(true);
+
+                int day_night_switch = PlayerPrefs.GetInt(StaticFlag.PlayerPref.DayNightTogglePref, 1);
                 _timeOfDayController.skyTime = Mathf.Lerp(night_value, day_value, day_night_switch);
                 day_night_toggle.SetIsOnWithoutNotify(day_night_switch == 1);
 
                 OnDayNightToggleChange(day_night_switch == 1);
+            } else
+            {
+                day_night_toggle.gameObject.SetActive(false);
             }
         }
 
@@ -182,6 +219,9 @@ namespace Hsinpa.UI
             Debug.Log("addressable_key " + addressable_key);
 
             bool load_sucess = await addressableSceneManagement.LoadAddScene(addressable_key);
+
+            PlayerPrefs.SetString(StaticFlag.PlayerPref.LoadScenePref, addressable_key);
+            PlayerPrefs.Save();
 
             //Skybox and Fog
             SetOtherConfiguration();
@@ -193,10 +233,9 @@ namespace Hsinpa.UI
         private async void OnSceneLoadClick() {
             if (string.IsNullOrEmpty(cache_key)) return;
 
-            SimpleEventSystem.Dispose();
+            this._load_scene_flag = true;
             bool result =  await LoadScene(cache_key);
-
-            if (result) Modals.instance.Close();
+            this._load_scene_flag = false;
         }
 
         private void OnFogSliderChange(float p_value) {

@@ -1,8 +1,10 @@
 using Hsinpa.Character;
 using Hsinpa.Ctrl;
 using Hsinpa.Entity;
+using Hsinpa.Event;
 using Hsinpa.Static;
 using Hsinpa.UI;
+using Hsinpa.Utility;
 using Hsinpa.View;
 using MultiProjectorWarpSystem;
 using System.Collections;
@@ -64,12 +66,22 @@ namespace Hsinpa.Main
         }
 
         #region Input Callback
+        private void OnSimpleEvent(int p_event, params object[] customObjects) {
+            if (p_event == MessageEventFlag.HsinpaEvent.General.SceneStructLoaded)
+            {
+                OnSceneChange();
+            }
+        }
+
         private void RegisterInput() {
-            rootSceneCtrl.SceneActiveEvent += OnSceneChange;
+            SimpleEventSystem.CustomEventListener += OnSimpleEvent;
             mIputActions.Player.Teleport.started += OnTeleportEvent;
         }
 
         private void OnSceneChange() {
+            Modals.instance.Close<SceneCtrlModal>();
+            PlayerInputEnable(true);
+
             mInterestPointManager = GameObject.FindObjectOfType<InterestPointManager>();
             mInterestPointManager.SetUp();
 
@@ -189,9 +201,5 @@ namespace Hsinpa.Main
                 outerCameraManager.UpdateCameraConfig(generalTypeStruct);
         }
 
-        private void OnDestroy()
-        {
-            rootSceneCtrl.SceneActiveEvent -= OnSceneChange;
-        }
     }
 }

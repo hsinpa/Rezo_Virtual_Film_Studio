@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -40,6 +41,9 @@ MonoBehaviour:
       - CloudCubemapNormalDoubleLayerLitColorKey
       - CloudCubemapNormalDoubleLayerShadowKey
       - StarBasicTintColorKey
+      - AmbientLightSkyColorKey
+      - AmbientLightEquatorColorKey
+      - AmbientLightGroundColorKey
       m_Values:
       - keyframes:
         - m_Id: 78e30ca3-f54d-4d48-92b4-a79be2bc4d95
@@ -225,6 +229,30 @@ MonoBehaviour:
           color: {r: 1, g: 1, b: 1, a: 1}
         m_Name: Star Tint Color
         m_Id: 62aed9cf-ac13-4abd-840c-da2a828bfb75
+      - keyframes:
+        - m_Id: 7307c80b-842e-4bf4-973f-4d0bad958c73
+          m_Time: 0
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        m_Name: Ambient Light - Sky Color
+        m_Id: 5bb920f4-ebde-4cc5-889a-004425226018
+      - keyframes:
+        - m_Id: 1755fa19-b71c-4a9d-b101-1de755619830
+          m_Time: 0
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        m_Name: Ambient Light - Equator Color
+        m_Id: 8298d4d3-8a59-4eff-b9b3-83d8777b0ced
+      - keyframes:
+        - m_Id: 2ceed6ef-f1bb-4d60-90d5-657992200d76
+          m_Time: 0
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          color: {r: 0, g: 0, b: 0, a: 1}
+        m_Name: Ambient Light - Ground Color
+        m_Id: 5aa952b0-9388-4f8a-9a5e-1c274bb3549f
     m_NumberGroup:
       m_Keys:
       - SkyMiddleColorPosition
@@ -346,6 +374,9 @@ MonoBehaviour:
       - StarBasicOpacityKey
       - StarBasicExponentKey
       - StarBasicIntensityKey
+      - SunAlphaKey
+      - MoonAlphaKey
+      - CloudAlphaKey
       m_Values:
       - keyframes:
         - m_Id: 5fe07780-1a76-4719-8470-320b6364e60d
@@ -1537,6 +1568,36 @@ MonoBehaviour:
         m_Id: 7465cb89-24d4-4d10-9f52-68462f5806b8
         minValue: 1
         maxValue: 25
+      - keyframes:
+        - m_Id: 6c6c24d3-7675-41d6-8538-1db3146a3846
+          m_Time: 0
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          value: 1
+        m_Name: Sun Transparency
+        m_Id: a89bc8fc-4c72-46bd-9179-91badfcbaa9a
+        minValue: 0
+        maxValue: 1
+      - keyframes:
+        - m_Id: a2107664-cdff-4597-9841-d02869d53f83
+          m_Time: 0
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          value: 1
+        m_Name: Moon Transparency
+        m_Id: ef3d701c-3a74-434f-a25a-f28cddb9072a
+        minValue: 0
+        maxValue: 1
+      - keyframes:
+        - m_Id: 67bde422-44d8-4ce9-bb47-6259bbf84f35
+          m_Time: 0
+          m_InterpolationCurve: 0
+          m_InterpolationDirection: 0
+          value: 1
+        m_Name: Cloud Transparency
+        m_Id: ff731d73-a65a-49cb-8e7d-4a166b9ac993
+        minValue: 0
+        maxValue: 1
     m_TextureGroup:
       m_Keys:
       - SkyCubemapKey
@@ -1777,7 +1838,8 @@ MonoBehaviour:
     - StarBasicFeature
     - VertexGradientSkyFeature
     - CubemapCloudDoubleLayerCubemap
-    m_Values: 010100010000000000000000000001000000000000000000010100010100000000000000
+    - AmbientLightGradient
+    m_Values: 01010001000000000000000000000100000000000000000001010001010000000000000000
   lightningArtSet: {fileID: 11400000, guid: fcd26c6d0379bd1498f9fbfeaf211979, type: 2}
   rainSplashArtSet: {fileID: 11400000, guid: bc520d172250ae746bd6c81b2ca80510, type: 2}
   starLayer1DataTexture: {fileID: 0}

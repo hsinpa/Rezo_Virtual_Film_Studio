@@ -63,14 +63,14 @@ GraphicsSettings:
   m_LightmapKeepDynamicDirCombined: 1
   m_LightmapKeepShadowMask: 1
   m_LightmapKeepSubtractive: 1
-  m_FogKeepLinear: 1
+  m_FogKeepLinear: 0
   m_FogKeepExp: 1
-  m_FogKeepExp2: 1
+  m_FogKeepExp2: 0
   m_AlbedoSwatchInfos: []
   m_LightsUseLinearIntensity: 1
   m_LightsUseColorTemperature: 1
   m_DefaultRenderingLayerMask: 1
-  m_LogWhenShaderIsCompiled: 0
+  m_LogWhenShaderIsCompiled: 1
   m_SRPDefaultSettings:
     UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 16b8c494a05fc7f42a0e364f10dff784, type: 2}
   m_LightProbeOutsideHullStrategy: 0
