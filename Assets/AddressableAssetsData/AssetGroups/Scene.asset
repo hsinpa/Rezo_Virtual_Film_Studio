@@ -23,27 +23,27 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a04874b02345ded43969871d4a4b3123
-    m_Address: scene@ad_forest_scene
+    m_Address: scene@forest
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 709e98c3e4d41984887a0cfbf97d22dd
-    m_Address: scene@school_corridor_scene
+    m_Address: scene@school_corridor
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 134e4dda882916e4eac129b9018de29d
-    m_Address: scene@japanese_common_pool_scene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 37e2a053ace0bdb41b333b753d0e0f89
-    m_Address: scene@cyber_iron_city_scene
+    m_Address: scene@japanese_common_pool
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9e23515d4b0f135409796cc511a5d17e
-    m_Address: scene@cyber_scifi_scene
+    m_Address: scene@cyber_scifi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37e2a053ace0bdb41b333b753d0e0f89
+    m_Address: scene@cyber_iron_city
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
