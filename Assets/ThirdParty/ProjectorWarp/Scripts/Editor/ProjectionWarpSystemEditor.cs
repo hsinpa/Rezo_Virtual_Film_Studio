@@ -32,6 +32,7 @@ namespace MultiProjectorWarpSystem
 
         public void Refresh()
         {
+            return;
             //determine if critical things are changed
             if (myScript.projectorCount > MAX_CAMERAS)
                 myScript.projectorCount = MAX_CAMERAS;
@@ -55,6 +56,7 @@ namespace MultiProjectorWarpSystem
         }
         public override void OnInspectorGUI()
         {
+
             //DrawDefaultInspector();
             serializedObject.Update();
 

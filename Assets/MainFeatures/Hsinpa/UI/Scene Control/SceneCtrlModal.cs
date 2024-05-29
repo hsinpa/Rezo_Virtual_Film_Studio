@@ -74,9 +74,11 @@ namespace Hsinpa.UI
         private bool _load_scene_flag = false;
 
         private float night_value = 0.8f, day_value = 0.45f;
+        private UnitySceneManagement unitySceneManagement;
 
         protected override void Start() {
-            addressableSceneManagement = new AddressableSceneManagement();
+            unitySceneManagement = GetComponent<UnitySceneManagement>();
+            //addressableSceneManagement = new AddressableSceneManagement();
             string add_path = Path.Combine(Application.streamingAssetsPath, Hsinpa.Static.StaticFlag.Path.AddressableList);
 
             if (File.Exists(add_path)) {
@@ -107,10 +109,10 @@ namespace Hsinpa.UI
         {
             loading_background.gameObject.SetActive(_load_scene_flag);
 
-            if (_load_scene_flag && addressableSceneManagement != null)
-            {
-                loading_text.text = "Loading progress: " + System.Math.Round(addressableSceneManagement.GetCompletePercentage(), 2);
-            }
+            //if (_load_scene_flag && addressableSceneManagement != null)
+            //{
+            //    loading_text.text = "Loading progress: " + System.Math.Round(addressableSceneManagement.GetCompletePercentage(), 2);
+            //}
         }
 
         public void Setup() {
@@ -217,8 +219,7 @@ namespace Hsinpa.UI
             cache_key = addressable_key;
 
             Debug.Log("addressable_key " + addressable_key);
-
-            bool load_sucess = await addressableSceneManagement.LoadAddScene(addressable_key);
+            bool load_sucess = await unitySceneManagement.LoadScene(addressable_key);
 
             PlayerPrefs.SetString(StaticFlag.PlayerPref.LoadScenePref, addressable_key);
             PlayerPrefs.Save();
