@@ -355,8 +355,8 @@ namespace MultiProjectorWarpSystem
             float compressedArcAngle;
             float offsetAngle;
 
-            near = 0.1f;
-            far = 200;
+            near = 0.01f;
+            far = 1000;
             projectorCount = 1;
             fieldOfView = 130;
             arrangement = CameraArragement.HORIZONTAL_PERSPECTIVE;
