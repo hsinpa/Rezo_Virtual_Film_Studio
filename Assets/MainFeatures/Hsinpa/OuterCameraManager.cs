@@ -26,8 +26,8 @@ namespace Hsinpa.Character {
         private VivePoseTracker vivePoseTracker;
 
 
-        private float fov_min_range_config = 60;
-        private float fov_max_range_config = 200;
+        private float fov_min_range_config = 45;
+        private float fov_max_range_config = 140;
 
         private Transform mCameraTransform;
         private Camera[] mCamera;

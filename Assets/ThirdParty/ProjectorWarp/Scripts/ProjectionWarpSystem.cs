@@ -358,7 +358,7 @@ namespace MultiProjectorWarpSystem
             near = 0.01f;
             far = 1000;
             projectorCount = 1;
-            fieldOfView = 130;
+            fieldOfView = 90;
             arrangement = CameraArragement.HORIZONTAL_PERSPECTIVE;
 
             // Near far adjustments only for orthographic cameras
@@ -593,7 +593,7 @@ namespace MultiProjectorWarpSystem
                 sourceCameras.Add(camera);
                 sourceCamera.name = "Source Camera " + (i + 1);
                 sourceCamera.transform.SetParent(sourceCamerasContainer);
-                renderTexture = new RenderTexture((int)1280, (int)720, 24, RenderTextureFormat.ARGB32);
+                renderTexture = new RenderTexture((int)1920, (int)1200, 24, RenderTextureFormat.ARGB32);
                 renderTexture.antiAliasing = 8;
                 renderTexture.Create();
                 targetDisplays.Add(i + firstProjector - 1);
@@ -832,7 +832,7 @@ namespace MultiProjectorWarpSystem
             yDivisions = 8;
 
             arrangement = (CameraArragement)N["Arrangement"].AsInt;
-            renderTextureSize = new Vector2(1280, 720);
+            renderTextureSize = new Vector2(1920, 1200);
 
             reverseOrdering = false;
             if(N["ReverseOrdering"]!=null){
